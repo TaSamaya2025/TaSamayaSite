@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Страница оповещающая, что письмо отправлено на почту студии дизайна интерьера.">
+    <meta name="keywords" content="галерея, дизайн интерьера, проекты, фото">
+    <meta name="author" content="Та самая">
+    <title>Запрос отправлен</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-XXXXXXX-X');
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	
+    <style>
+		@font-face {
+            font-family: 'Inter'; 
+            src: url('font/Inter.woff2') format('truetype'); 
+        }
+        body {
+            font-family: Inter, sans-serif;
+            margin: 0;
+            background-color: #333333;
+			overflow: hidden;
+        }
+
+        .conteiner {
+			height: 80vh;
+			width: 106vw;
+			display: grid;
+			grid-template-columns: auto;
+			grid-template-rows: 3fr 3fr 3fr;
+            gap: 0.8rem;
+            background-color: #333;
+            color: white;
+			margin-top: -2vh;
+			margin-left: -4vw;
+        }
+
+        .text {
+            text-align: left;
+			margin: 1vw;
+            padding: 3vh 5vw;
+			font-size: 1.1rem;
+			line-height: 1.5rem;
+			font-weight: 300;
+            color: #EFEFEF;
+			background-color: rgba(129, 129, 129, 0.3);
+			border-radius: 20px;
+        }
+		.top-gallery, .bottom-gallery {
+			display: grid;
+			grid-template: repeat(1, 2fr)/repeat(16, 1fr);
+            gap: 1vw;
+        }
+
+        .top-gallery img, .bottom-gallery img {
+            width: 100%;
+            height: 100%;
+			flex-shrink: 0;
+            border-radius: 10px;
+            object-fit: cover;
+			transition: opacity 0.5s ease;
+        }
+		.highlight{
+			font-weight: 500;
+			color: white;
+		}
+		.border-underline {
+			display: inline-block;
+			border-bottom: 2px solid #FFFFFF; 
+			padding-bottom: 1px;          
+		  }
+		.conteiner_text{
+			display: flex;
+			flex-direction:row;
+			text-align: center;
+			justify-content: center;
+			
+		}
+		.A{grid-area: 1 / 1 / 2 / 4;}
+		.B{grid-area: 1 / 4 / 2 / 7;}
+		.C{grid-area: 1 / 7 / 2 / 9;}
+		.D{grid-area: 1 / 9 / 2 / 12;}
+		.E{grid-area: 1 / 12 / 2 / 14;}
+		.F{grid-area: 1 / 14 / 2 / 17;}
+		
+		.G{grid-area: 1 / 1 / 2 / 3;}
+		.H{grid-area: 1 / 3 / 2 / 5;}
+		.I{grid-area: 1 / 5 / 2 / 8;}
+		.J{grid-area: 1 / 8 / 2 / 12;}
+		.K{grid-area: 1 / 12 / 2 / 14;}
+		.L{grid-area: 1 / 14 / 2 / 17;}
+		
+    </style>
+</head>
+<body>
+
+<div class="conteiner">
+<div class="top-gallery">
+    <img class="A" src="Image/39.png" alt="Photo 1">
+    <img class="B" src="Image/43.png" alt="Photo 2">
+    <img class="C" src="Image/46.png" alt="Photo 3">
+    <img class="D" src="Image/45.png" alt="Photo 4">
+    <img class="E" src="Image/20.png" alt="Photo 5">
+    <img class="F" src="Image/11.png" alt="Photo 6">
+</div>
+<div class="conteiner_text">
+	<div class="text"><p><span class="highlight">Мы получили ваши данные</span> и скоро свяжемся с вами, чтобы обсудить детали.<br></p>
+		<p><span class="highlight">Что будет дальше?</span><br>
+        Наш специалист перезвонит вам в течение рабочего дня, чтобы уточнить ваши пожелания.<br>
+        Мы ответим на все вопросы и расскажем о дальнейших шагах работы над вашим интерьером.<br></p>
+    <p>Если у вас появились срочные вопросы, то вы можете связаться с нами по номеру телефона: <span class="highlight border-underline">+7 (911) 905-33-32</span></p></div>
+</div>
+<div class="bottom-gallery">
+    <img class="G" src="Image/10.png" alt="Photo 1">
+    <img class="H" src="Image/42.png" alt="Photo 2">
+    <img class="I" src="Image/21.png" alt="Photo 3">
+    <img class="J" src="Image/41.png" alt="Photo 4">
+    <img class="K" src="Image/17.png" alt="Photo 5">
+    <img class="L" src="Image/22.png" alt="Photo 6">
+</div>
+</div>
+</body>
+</html>
