@@ -259,7 +259,7 @@
 	</div>
 	
 	<section id="pricing" class="pricing-section">
-	  <h3 class="title_for_blocks">ЭТАПЫ РАБОТЫ НАД ПРОЕКТОМ</h3>
+	  <h3 class="title_for_blocks">СТОИМОСТЬ УСЛУГ</h3>
 	  <div class="pricing-grid">
 		<div class="pricing-card">
 		  <div class="image-container">
@@ -312,16 +312,16 @@
   <div class="modal-content">
     <button class="close-btn">&times;</button>
     <h3 class="title_for_modal">ЗАКАЗАТЬ ДИЗАЙН-ПРОЕКТ</h3>
-    <form id="modal-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeV0GdyahW3A-E3xflJLY2IBtfBeezdLt-rcogTe8gcGC5elA/formResponse" method="POST">
+    <form id="modal-form" action="https://docs.google.com/forms/d/e/1FAIpQLSchI-o9zIV8Vi9W7vVF6B1jtNNtMLl-Oa4jwPG3hVwZ10Of7g/formResponse" method="POST">
 	  <div class="row2">
 		  <p class="color_text_modal">Вы выбрали тариф - <span id="selected-plan" class="fat_ysl">БАЗА</span></p> 
 		  <p id="selected-price" class="color_text_modal">5300 ₽/м²</p></div>
 		  <p class="color_text_modal2"> Для дальнейшего сотрудничества просим Вас предоставить<br>  необходимую информацию: </p>
-			<input type="hidden" id="hidden-plan" name="entry.842302418" value=""> 
-  			<input type="hidden" id="hidden-price" name="entry.1168902312" value="">
-		  <input type="text" id="name" name="entry.2025461568" placeholder="Ваше имя" required>
-		  <input type="tel" id="phone" name="entry.133507086" placeholder="Телефон/ Телеграмм для связи" required>
-		  <textarea id="message" name="entry.240502029" placeholder="Сообщение для нас:"></textarea>
+			<input type="hidden" id="hidden-plan" name="entry.241067395" value=""> 
+  			<input type="hidden" id="hidden-price" name="entry.1405731098" value="">
+		  <input type="text" id="name" name="entry.805646980" placeholder="Ваше имя" required>
+		  <input type="tel" id="phone" name="entry.672738739" placeholder="Телефон/ Телеграмм для связи" required>
+		  <textarea id="message" name="entry.842923293" placeholder="Сообщение для нас:"></textarea>
 		  <p class="color_text_modal2"> Вы можете написать площадь вашего помещения, чтобы мы до звонка вам, смогли рассчитать стоимость проекта для вас.</p>
 		  <p class="contact-info">
 			Если у вас появились срочные вопросы, то можете связаться с нами по номеру телефона:</p> 
@@ -366,11 +366,11 @@
 	</div>
 	<div class="The_form">
     <img  class="photo2" src="Image/form.jpg" alt="Рич Бич">
-    <form id="myForm3" class="colum" action="https://docs.google.com/forms/d/e/1FAIpQLSeV0GdyahW3A-E3xflJLY2IBtfBeezdLt-rcogTe8gcGC5elA/formResponse" method="POST">
+    <form id="myForm3" class="colum" action="https://docs.google.com/forms/d/e/1FAIpQLSchI-o9zIV8Vi9W7vVF6B1jtNNtMLl-Oa4jwPG3hVwZ10Of7g/formResponse" method="POST">
         <h3>ЗАКАЗАТЬ ДИЗАЙН ПРОЕКТ</h3>
-        <input class="dop_color" type="text" id="name3" name="entry.2025461568" placeholder="Ваше имя" required>
-        <input class="dop_color" type="tel" id="phone3" name="entry.133507086" placeholder="Телефон/ Телеграмм для связи" required>
-        <textarea class="dop_color" id="message3" name="entry.240502029" placeholder="Сообщение для нас:"></textarea>
+        <input class="dop_color" type="text" id="name3" name="entry.805646980" placeholder="Ваше имя" required>
+        <input class="dop_color" type="tel" id="phone3" name="entry.672738739" placeholder="Телефон/ Телеграмм для связи" required>
+        <textarea class="dop_color" id="message3" name="entry.842923293" placeholder="Сообщение для нас:"></textarea>
         <button type="submit" id="submitButton" class="submit-button padding4">ОБСУДИТЬ ПРОЕКТ</button>
     </form>
 </div>
@@ -392,8 +392,8 @@
 			.then((response) => {
 			  if (response.ok || response.redirected) {
 				alert('Форма успешно отправлена!');
-				closeModal(); // Закрываем модальное окно
-				form.reset(); // Очищаем форму
+				closeModal(); 
+				form.reset(); 
 				window.location.href = 'Thank.html';
 			  } else {
 				alert('Произошла ошибка. Попробуйте еще раз.');
