@@ -435,9 +435,9 @@
 		</div></div>
 		<div class="line"></div>
 		<div class="row2 center marging_footer_text">
-			<p class="text_footer">
-				ООО «ЛУЧ»<br>ОГРН 1197547235332<br>ИНН 7813641324<br>Юр. Адрес: 197198, г. Санкт-Петербург, Введенская ул., 22<br>Р/с № 40702810610000602328<br>АО «Тинькофф Банк»<br>К\с 30101810145250000974<br>БИК 044525974
-			</p>
+			<div class="colum"><p class="text_footer">
+				ООО «ЛУЧ»<br>ОГРН 1197547235332<br>ИНН 7813641324<br>Юр. Адрес: 197198, г. Санкт-Петербург, Введенская ул., 22<br>Р/с № 40702810610000602328<br>АО «Тинькофф Банк»<br>К\с 30101810145250000974<br>БИК 044525974<br>
+			</p><p class="text_footer">&copy; <span id="year"></span> Та самая. Все права защищены.</p></div>
 			<a class="no_des" href="mailto:lukia@tasamaya-design.ru?subject=Обратная связь&body=Здравствуйте, я хочу узнать..."><p class="text_footer2"> lukia@tasamaya-design.ru</p></a>
 		</div>
 	</footer>
@@ -445,7 +445,7 @@
     event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
     const form = event.target;
 
-    // Проверка заполненности полей (если нужно, добавьте свои условия)
+    // Проверка заполненности полей 
     const name = document.getElementById('name3').value.trim();
     const phone = document.getElementById('phone3').value.trim();
     const message = document.getElementById('message3').value.trim();
@@ -455,10 +455,8 @@
         return;
     }
 
-    // Создаем объект данных из формы
     const formData = new FormData(form);
 
-    // Выполняем отправку данных через fetch
     fetch(form.action, {
         method: 'POST',
         body: formData,

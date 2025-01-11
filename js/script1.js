@@ -164,5 +164,5 @@ function changeRandomArea() {
 
 setInterval(changeRandomArea, 3500);
 
-
+document.getElementById('year').textContent = new Date().getFullYear();
 
