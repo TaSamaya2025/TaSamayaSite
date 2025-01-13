@@ -366,47 +366,51 @@
 	</div>
 	<div class="The_form">
     <img  class="photo2" src="Image/form.jpg" alt="Рич Бич">
-    <form id="myForm3" class="colum" action="https://docs.google.com/forms/d/e/1FAIpQLSchI-o9zIV8Vi9W7vVF6B1jtNNtMLl-Oa4jwPG3hVwZ10Of7g/formResponse" method="POST">
+    <form id="myForm3" class="colum" method="POST" action="/.netlify/functions/sendEmail">
         <h3>ЗАКАЗАТЬ ДИЗАЙН ПРОЕКТ</h3>
-        <input class="dop_color" type="text" id="name3" name="entry.805646980" placeholder="Ваше имя" required>
-        <input class="dop_color" type="tel" id="phone3" name="entry.672738739" placeholder="Телефон/ Телеграмм для связи" required>
-        <textarea class="dop_color" id="message3" name="entry.842923293" placeholder="Сообщение для нас:"></textarea>
+        <input class="dop_color" type="text" id="name3" name="name" placeholder="Ваше имя" required>
+        <input class="dop_color" type="tel" id="phone3" name="phone" placeholder="Телефон/ Телеграмм для связи" required>
+        <textarea class="dop_color" id="message3" name="message" placeholder="Сообщение для нас:"></textarea>
         <button type="submit" id="submitButton" class="submit-button padding4">ОБСУДИТЬ ПРОЕКТ</button>
     </form>
 </div>
-	
 	<script>
-		document.getElementById('myForm3').addEventListener('submit', function (event) {
-		event.preventDefault(); 
-		
-		if (isSubmitting) return;
-    	isSubmitting = true;
-		
-		const form = event.target;
-		const formData = new FormData(form);
+    document.getElementById('myForm3').addEventListener('submit', async function (event) {
+        event.preventDefault(); // Останавливаем стандартное поведение формы (перезагрузку страницы)
 
-		  fetch(form.action, {
-			method: 'POST',
-			body: formData,
-		  })
-			.then((response) => {
-			  if (response.ok || response.redirected) {
-				alert('Форма успешно отправлена!');
-				closeModal(); 
-				form.reset(); 
-				window.location.href = 'Thank.html';
-			  } else {
-				alert('Произошла ошибка. Попробуйте еще раз.');
-			  }
-			})
-			.catch((error) => {
-			  console.error('Ошибка сети:', error);
-			  alert('Ошибка сети. Проверьте подключение.');
-			});
-		});
-		});
-	</script>
-	
+        // Получаем данные из формы
+        const formData = new FormData(event.target);
+        const data = {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            message: formData.get('message'),
+        };
+
+        // Отправка данных на сервер через Fetch
+        try {
+            const response = await fetch('/.netlify/functions/sendEmail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            // Обработка ответа от сервера
+            if (response.ok) {
+                alert('Сообщение успешно отправлено!'); // Уведомление об успешной отправке
+                event.target.reset(); // Сбросить форму
+            } else {
+                const error = await response.json();
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка при отправке. Пожалуйста, попробуйте снова.');
+            }
+        } catch (err) {
+            console.error('Ошибка подключения:', err);
+            alert('Не удалось подключиться к серверу. Пожалуйста, проверьте ваше подключение.');
+        }
+    });
+</script>
 	<h3 id="details" class="title_for_blocks marg_for_gallery">ДЕТАЛИ НАШИХ ПРОЕКТОВ</h3>
 	<div class="container5">
 		<div class="gallery">

@@ -563,7 +563,7 @@
 	  resize: none; 
 	}
 	textarea:focus {
-	  border-bottom: 2px solid #3a7aff; /* Подсветка линии при фокусе */
+	  border-bottom: 2px solid #3a7aff; 
 	}
 	.title_for_modal{
 		font-size: 1.4rem;
@@ -764,7 +764,7 @@
 		width: 30vw;
 		border-bottom: 2px solid #3D3B38; 
 		font-size: 1rem;
-		padding: 2vh 0vw;
+		padding: 2.5vh 0vw;
 	}
 	#message3:focus{
 		border-bottom: 2px solid #3a7aff; 
