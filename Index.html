@@ -378,6 +378,10 @@
 	<script>
     document.getElementById('myForm3').addEventListener('submit', async function(event) {
     event.preventDefault();
+		
+		const formData = new FormData(event.target);
+		const data = {};
+		formData.forEach((value, key) => data[key] = value);
 
 			try {
 			  const response = await fetch('/.netlify/functions/send-email', {
