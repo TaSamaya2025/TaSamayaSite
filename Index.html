@@ -312,7 +312,7 @@
   <div class="modal-content">
     <button class="close-btn">&times;</button>
     <h3 class="title_for_modal">ЗАКАЗАТЬ ДИЗАЙН-ПРОЕКТ</h3>
-    <form id="modal-form" action="https://docs.google.com/forms/d/e/1FAIpQLSchI-o9zIV8Vi9W7vVF6B1jtNNtMLl-Oa4jwPG3hVwZ10Of7g/formResponse" method="POST">
+    <form id="modal-form">
 	  <div class="row2">
 		  <p class="color_text_modal">Вы выбрали тариф - <span id="selected-plan" class="fat_ysl">БАЗА</span></p> 
 		  <p id="selected-price" class="color_text_modal">5300 ₽/м²</p></div>
@@ -371,6 +371,7 @@
         <input class="dop_color" type="text" id="name3" name="name" placeholder="Ваше имя" required>
         <input class="dop_color" type="tel" id="phone3" name="phone" placeholder="Телефон/ Телеграмм для связи" required>
         <textarea class="dop_color" id="message3" name="message" placeholder="Сообщение для нас:"></textarea>
+		<div id="loadingSpinner" style="display:none;">Загрузка...</div>
         <button type="submit" id="submitButton" class="submit-button padding4">ОБСУДИТЬ ПРОЕКТ</button>
     </form>
 </div>
@@ -378,30 +379,25 @@
     document.getElementById('myForm3').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const formData = new FormData(this);
-		const data = {
-		  name: formData.get('name'),
-		  phone: formData.get('phone'),
-		  message: formData.get('message'),
-		};
-      try {
-		  const response = await fetch('/.netlify/functions/sendEmail', {  // Путь к вашему серверу
-			method: 'POST',
-			body: JSON.stringify(data),
-			headers: { 'Content-Type': 'application/json' },
-		  });
+			try {
+			  const response = await fetch('/.netlify/functions/send-email', {
+				method: 'POST',
+				headers: {
+				  'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			  });
 
-		  if (response.status === 200) {
-			// Письмо отправлено, будет выполнен редирект на сервере
-			window.location.href = 'thank.html'; // Переход на страницу подтверждения вручную (если нужно)
-		  } else {
-			alert('Произошла ошибка при отправке письма.');
-		  }
-		} catch (error) {
-		  alert('Ошибка сети или сервера.');
-		}
-	  });
-</script>
+			  const result = await response.json();
+			  alert(result.message);
+			} catch (error) {
+			  console.error('Ошибка при отправке формы:', error);
+			  alert('Произошла ошибка при отправке сообщения.');
+			}
+		  });
+		
+		spinner.style.display = 'none';
+	</script>
 	<h3 id="details" class="title_for_blocks marg_for_gallery">ДЕТАЛИ НАШИХ ПРОЕКТОВ</h3>
 	<div class="container5">
 		<div class="gallery">

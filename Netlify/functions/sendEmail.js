@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 exports.handler = async function (event, context) {
   console.log('Тело запроса:', event.body);
 
+  // Проверка HTTP метода
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -19,6 +20,7 @@ exports.handler = async function (event, context) {
   }
 
   try {
+    // Разбор тела запроса
     let data;
     try {
       data = JSON.parse(event.body);
@@ -33,6 +35,7 @@ exports.handler = async function (event, context) {
     const { name, phone, message } = data;
     console.log('Полученные данные:', { name, phone, message });
 
+    // Валидация данных
     if (!name || name.length < 2) {
       return {
         statusCode: 400,
@@ -52,16 +55,18 @@ exports.handler = async function (event, context) {
       };
     }
 
+    // Настройка транспортера
     const transporter = nodemailer.createTransport({
       host: 'smtp.yandex.ru',
       port: 465,
       secure: true,
       auth: {
         user: 'SvetlanaVorobueva@yandex.ru',
-        pass: process.env.SMTP_PASS, // Пароль лучше брать из переменной окружения
+        pass: process.env.SMTP_PASS, // Пароль из переменной окружения
       },
     });
 
+    // Параметры письма
     const mailOptions = {
       from: '"Светлана Воробьева" <SvetlanaVorobueva@yandex.ru>',
       to: 'SvetlanaVorobueva@yandex.ru',
@@ -69,6 +74,7 @@ exports.handler = async function (event, context) {
       text: `Сообщение от ${name} (Телефон: ${phone}):\n\n${message}`,
     };
 
+    // Отправка письма
     const info = await transporter.sendMail(mailOptions);
     console.log('Письмо отправлено:', info.messageId);
 
@@ -81,7 +87,9 @@ exports.handler = async function (event, context) {
 
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Произошла ошибка при отправке письма' }),
+      body: JSON.stringify({
+        message: 'Не удалось отправить письмо. Проверьте настройки сервера SMTP.',
+      }),
     };
   }
 };

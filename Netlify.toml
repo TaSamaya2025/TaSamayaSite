@@ -1,8 +1,2 @@
 [build]
   functions = "netlify/functions"
-
-[[redirects]]
-  from = "/design-project"
-  to = "/.netlify/functions/sendEmail"
-  status = 200
-  method = "POST"

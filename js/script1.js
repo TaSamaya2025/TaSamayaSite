@@ -71,38 +71,6 @@ textarea.addEventListener('input', function () {
   this.style.height = this.scrollHeight + 'px'; 
 });
 
-// Очистка формы после успешной отправки
-form.addEventListener('submit', function (event) {
-  event.preventDefault(); // Предотвращаем стандартное поведение
-	
-  if (isSubmitting) return;
-  isSubmitting = true;
-	
-  const formData = new FormData(form);
-
-  fetch(form.action, {
-    method: 'POST',
-    body: formData,
-  })
-    .then((response) => {
-      if (response.ok || response.redirected) {
-        alert('Форма успешно отправлена!');
-        closeModal(); // Закрываем модальное окно
-        form.reset(); // Очищаем форму
-        window.location.href = 'Thank.html';
-      } else {
-        alert('Произошла ошибка. Попробуйте еще раз.');
-      }
-    })
-    .catch((error) => {
-      console.error('Ошибка сети:', error);
-      alert('Ошибка сети. Проверьте подключение.');
-    });
-});
-
-
-
-
 //Авторский надзор и менеджмент
 document.querySelectorAll('.card-wrapper').forEach(card => {
         card.addEventListener('click', () => {
