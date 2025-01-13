@@ -1,9 +1,9 @@
-console.log('Запуск скрипта...');
-
+require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 exports.handler = async function (event, context) {
-  // Проверяем, что это POST-запрос
+  console.log('Тело запроса:', event.body);
+
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -11,46 +11,77 @@ exports.handler = async function (event, context) {
     };
   }
 
-  try {
-    // Парсим данные из тела запроса
-    const { name, phone, message } = JSON.parse(event.body);
+  if (!event.body) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'Тело запроса отсутствует' }),
+    };
+  }
 
-    // Создаем транспортер для отправки почты через SMTP-сервер Яндекса
+  try {
+    let data;
+    try {
+      data = JSON.parse(event.body);
+    } catch (err) {
+      console.error('Ошибка парсинга JSON:', err);
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ message: 'Некорректный JSON в теле запроса' }),
+      };
+    }
+
+    const { name, phone, message } = data;
+    console.log('Полученные данные:', { name, phone, message });
+
+    if (!name || name.length < 2) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ message: 'Имя должно быть не короче 2 символов' }),
+      };
+    }
+    if (!phone || !/^\+?\d{10,15}$/.test(phone)) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ message: 'Телефон должен быть валидным номером' }),
+      };
+    }
+    if (!message || message.trim().length === 0) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ message: 'Сообщение не может быть пустым' }),
+      };
+    }
+
     const transporter = nodemailer.createTransport({
       host: 'smtp.yandex.ru',
-      port: 465,  // Порт для SSL
-      secure: true,  // Используем SSL-соединение
+      port: 465,
+      secure: true,
       auth: {
-        user: 'SvetlanaVorobueva@yandex.ru',  // Почта Яндекс
-        pass: 'cmhxpjvqhufxbver',             // Пароль от приложения
+        user: 'SvetlanaVorobueva@yandex.ru',
+        pass: process.env.SMTP_PASS, // Пароль лучше брать из переменной окружения
       },
     });
 
-    // Настройка письма
     const mailOptions = {
-      from: '"Светлана Воробьева" <SvetlanaVorobueva@yandex.ru>',  // От кого
-      to: 'SvetlanaVorobueva@yandex.ru',                          // Кому (можно тестировать на тот же адрес)
-      subject: 'Заявка на дизайн проект',                          // Тема письма
-      text: `Сообщение от ${name} (Телефон: ${phone}):\n\n${message}`,  // Текст письма
+      from: '"Светлана Воробьева" <SvetlanaVorobueva@yandex.ru>',
+      to: 'SvetlanaVorobueva@yandex.ru',
+      subject: 'Заявка на дизайн проект',
+      text: `Сообщение от ${name} (Телефон: ${phone}):\n\n${message}`,
     };
 
-    // Отправка письма
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Письмо отправлено:', info.messageId);
 
-    // Ответ об успешной отправке
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Письмо успешно отправлено!' }),
     };
   } catch (error) {
-    console.error('Ошибка при отправке письма:', error);
+    console.error('Ошибка при обработке запроса:', error);
 
-    // Ответ в случае ошибки
     return {
       statusCode: 500,
       body: JSON.stringify({ message: 'Произошла ошибка при отправке письма' }),
     };
   }
 };
-
-console.log('Скрипт завершен.');

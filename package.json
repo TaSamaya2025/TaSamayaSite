@@ -18,6 +18,7 @@
   "homepage": "https://github.com/TaSamaya2025/TaSamayaSite#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "nodemailer": "^6.9.16"
   }
 }

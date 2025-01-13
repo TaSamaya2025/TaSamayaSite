@@ -375,50 +375,32 @@
     </form>
 </div>
 	<script>
-    document.getElementById('myForm3').addEventListener('submit', async function (event) {
-        event.preventDefault(); 
-		const formData = new FormData(event.target);
-		const name = document.getElementById('name3').value.trim();
-		const phone = document.getElementById('phone3').value.trim();
-		const message = document.getElementById('message3').value.trim();
+    document.getElementById('contact-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
 
-		if (!name || !phone) {
-			alert('Пожалуйста, заполните все обязательные поля.');
-			return;
-		}// Останавливаем стандартное поведение формы (перезагрузку страницы)
+    const formData = new FormData(this);
+		const data = {
+		  name: formData.get('name'),
+		  phone: formData.get('phone'),
+		  message: formData.get('message'),
+		};
+      try {
+		  const response = await fetch('/.netlify/functions/sendEmail', {  // Путь к вашему серверу
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: { 'Content-Type': 'application/json' },
+		  });
 
-        // Получаем данные из формы
-        
-        const data = {
-            name: formData.get('name'),
-            phone: formData.get('phone'),
-            message: formData.get('message'),
-        };
-
-        // Отправка данных на сервер через Fetch
-        try {
-            const response = await fetch('/.netlify/functions/sendEmail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-
-            // Обработка ответа от сервера
-            if (response.ok) {
-                alert('Сообщение успешно отправлено!'); // Уведомление об успешной отправке
-                event.target.reset(); // Сбросить форму
-            } else {
-                const error = await response.json();
-                console.error('Ошибка:', error);
-                alert('Произошла ошибка при отправке. Пожалуйста, попробуйте снова.');
-            }
-        } catch (err) {
-            console.error('Ошибка подключения:', err);
-            alert('Не удалось подключиться к серверу. Пожалуйста, проверьте ваше подключение.');
-        }
-    });
+		  if (response.status === 200) {
+			// Письмо отправлено, будет выполнен редирект на сервере
+			window.location.href = '/success.html'; // Переход на страницу подтверждения вручную (если нужно)
+		  } else {
+			alert('Произошла ошибка при отправке письма.');
+		  }
+		} catch (error) {
+		  alert('Ошибка сети или сервера.');
+		}
+	  });
 </script>
 	<h3 id="details" class="title_for_blocks marg_for_gallery">ДЕТАЛИ НАШИХ ПРОЕКТОВ</h3>
 	<div class="container5">
