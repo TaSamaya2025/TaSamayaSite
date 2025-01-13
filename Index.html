@@ -376,10 +376,19 @@
 </div>
 	<script>
     document.getElementById('myForm3').addEventListener('submit', async function (event) {
-        event.preventDefault(); // Останавливаем стандартное поведение формы (перезагрузку страницы)
+        event.preventDefault(); 
+		const formData = new FormData(event.target);
+		const name = document.getElementById('name3').value.trim();
+		const phone = document.getElementById('phone3').value.trim();
+		const message = document.getElementById('message3').value.trim();
+
+		if (!name || !phone) {
+			alert('Пожалуйста, заполните все обязательные поля.');
+			return;
+		}// Останавливаем стандартное поведение формы (перезагрузку страницы)
 
         // Получаем данные из формы
-        const formData = new FormData(event.target);
+        
         const data = {
             name: formData.get('name'),
             phone: formData.get('phone'),
