@@ -365,8 +365,8 @@
     </div>
 	</div>
 	<div class="The_form">
-    <img  class="photo2" src="Image/form.jpg" alt="Рич Бич">
-    <form id="myForm3" class="colum" method="POST" action="/.netlify/functions/sendEmail">
+    <img  class="photo2" src="Image/form.jpg" alt="общая форма">
+    <form id="myForm3" class="colum">
         <h3>ЗАКАЗАТЬ ДИЗАЙН ПРОЕКТ</h3>
         <input class="dop_color" type="text" id="name3" name="name" placeholder="Ваше имя" required>
         <input class="dop_color" type="tel" id="phone3" name="phone" placeholder="Телефон/ Телеграмм для связи" required>
@@ -375,7 +375,7 @@
     </form>
 </div>
 	<script>
-    document.getElementById('contact-form').addEventListener('submit', async function(event) {
+    document.getElementById('myForm3').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const formData = new FormData(this);
@@ -393,7 +393,7 @@
 
 		  if (response.status === 200) {
 			// Письмо отправлено, будет выполнен редирект на сервере
-			window.location.href = '/success.html'; // Переход на страницу подтверждения вручную (если нужно)
+			window.location.href = 'thank.html'; // Переход на страницу подтверждения вручную (если нужно)
 		  } else {
 			alert('Произошла ошибка при отправке письма.');
 		  }
