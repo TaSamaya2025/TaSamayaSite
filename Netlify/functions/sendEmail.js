@@ -8,7 +8,7 @@ exports.handler = async function (event, context) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      body: JSON.stringify({ message: 'Метод не поддерживается' }),
+      body: JSON.stringify({ message: 'Метоd не поддерживается' }),
     };
   }
 

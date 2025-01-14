@@ -202,7 +202,7 @@
 		  display: flex;
 		  flex-direction: column;
 		  width: 100%;
-		  height: 80%; /* Высота всей области */
+		  height: 84%; /* Высота всей области */
 		  owerfloy-x: auto;
 		  margin-top: 6vh;
 		  margin-bottom: 6vh;
@@ -222,11 +222,11 @@
 	} 
 
 	.picture_scroll {
-		  margine-top: 5rem;
+		  margine-top: 6rem;
 		  position: relative;
 		  overflow-x: hidden; 
 		  width: 100%;
-		  height: 90%; 
+		  height: 86%; 
 		  display: flex;
 		  align-items: center;
 		  margin-top: 9vh;
@@ -234,8 +234,6 @@
 
 	.track {
 		  display: flex;
-		  width: 60%;
-		  height: auto;
 		  gap: 3rem; 
 		  animation: scroll 20s linear infinite; 
 		  will-change: transform;
