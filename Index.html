@@ -377,45 +377,40 @@
 </div>
 
 <script>
-    function submitForm(event) {
-        // Остановить стандартное поведение браузера (перезагрузку страницы).
-        event.preventDefault();
-        
-        // Показать спиннер загрузки.
-        document.getElementById("loadingSpinner").style.display = "block";
-        
-        // Собирать данные из формы.
-        const formData = new FormData(event.target);
-        const request = new XMLHttpRequest();
-        
-        // Преобразуем данные в JSON объект.
-        var jsonData = {};
-        formData.forEach((value, key) => {
-            jsonData[key] = value;
-        });
-        
-        // Отправка данных на сервер.
-        request.open("POST", "/.netlify/functions/sendEmail");
-        request.setRequestHeader("Content-Type", "application/json");
-        
-        request.onload = function() {
-            // Скрыть спиннер, когда запрос завершен.
-            document.getElementById("loadingSpinner").style.display = "none";
-            
-            // Если запрос успешен, показать сообщение.
-            if (request.status === 200) {
-                alert("Email request submitted!");
-            } else {
-                alert("Произошла ошибка при отправке данных.");
-            }
-            
-            // Очистить форму после отправки.
-            event.target.reset();
-        };
-        
-        // Отправляем данные в формате JSON.
-        request.send(JSON.stringify(jsonData));
-    }
+        document.getElementById("myForm3").addEventListener("submit", submitForm);
+
+		function submitForm(event) {
+			event.preventDefault(); // Остановить стандартное поведение формы
+
+			const formData = new FormData(event.target);
+			const jsonData = {};
+			formData.forEach((value, key) => {
+				jsonData[key] = value;
+			});
+
+			console.log("Отправляем JSON данные:", JSON.stringify(jsonData));
+
+			const request = new XMLHttpRequest();
+			request.open("POST", "/.netlify/functions/sendEmail");
+			request.setRequestHeader("Content-Type", "application/json");
+
+			// Отправить данные
+			request.onreadystatechange = function () {
+				if (request.readyState === XMLHttpRequest.DONE) {
+					if (request.status === 200) {
+						console.log("Успех:", request.responseText);
+						alert("Ваш запрос успешно отправлен!");
+					} else {
+						console.error("Ошибка:", request.status, request.statusText);
+						alert("Произошла ошибка при отправке запроса.");
+					}
+				}
+			};
+
+			request.send(JSON.stringify(jsonData));
+			// Очистить форму
+			event.target.reset();
+}
 </script>
 	<h3 id="details" class="title_for_blocks marg_for_gallery">ДЕТАЛИ НАШИХ ПРОЕКТОВ</h3>
 	<div class="container5">
