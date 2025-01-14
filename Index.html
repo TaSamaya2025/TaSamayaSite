@@ -317,16 +317,16 @@
 		  <p class="color_text_modal">Вы выбрали тариф - <span id="selected-plan" class="fat_ysl">БАЗА</span></p> 
 		  <p id="selected-price" class="color_text_modal">5300 ₽/м²</p></div>
 		  <p class="color_text_modal2"> Для дальнейшего сотрудничества просим Вас предоставить<br>  необходимую информацию: </p>
-			<input type="hidden" id="hidden-plan" name="entry.241067395" value=""> 
-  			<input type="hidden" id="hidden-price" name="entry.1405731098" value="">
-		  <input type="text" id="name" name="entry.805646980" placeholder="Ваше имя" required>
-		  <input type="tel" id="phone" name="entry.672738739" placeholder="Телефон/ Телеграмм для связи" required>
-		  <textarea id="message" name="entry.842923293" placeholder="Сообщение для нас:"></textarea>
+			<input type="hidden" id="hidden-plan"  value=""> 
+  			<input type="hidden" id="hidden-price"  value="">
+		  <input type="text" id="name"  placeholder="Ваше имя" required>
+		  <input type="tel" id="phone"  placeholder="Телефон/ Телеграмм для связи" required>
+		  <textarea id="message" placeholder="Сообщение для нас:"></textarea>
 		  <p class="color_text_modal2"> Вы можете написать площадь вашего помещения, чтобы мы до звонка вам, смогли рассчитать стоимость проекта для вас.</p>
 		  <p class="contact-info">
 			Если у вас появились срочные вопросы, то можете связаться с нами по номеру телефона:</p> 
 				<div class="colum"><strong class="phone">+7(911)-905-33-32</strong>
-				<div class="button-container"><button type="submit" class="submit-button">ОБСУДИТЬ ПРОЕКТ</button></div>
+				<div class="button-container"><button class="submit-button">ОБСУДИТЬ ПРОЕКТ</button></div>
 	    	</div>
     </form>
   </div>
@@ -395,7 +395,7 @@
         });
         
         // Отправка данных на сервер.
-        request.open("POST", "/.netlify/functions/send-email");
+        request.open("POST", "/.netlify/functions/sendEmail");
         request.setRequestHeader("Content-Type", "application/json");
         
         request.onload = function() {
