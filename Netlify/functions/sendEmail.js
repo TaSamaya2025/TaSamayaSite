@@ -1,92 +1,51 @@
 require('dotenv').config();
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
-exports.handler = async function (event, context) {
-  console.log('Тело запроса:', event.body);
-
-  // Проверка HTTP метода
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ message: 'Метоd не поддерживается' }),
-    };
-  }
-
-  if (!event.body) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Тело запроса отсутствует' }),
-    };
-  }
-
-  let data;
+exports.handler = async function (event, context, callback) {
   try {
-    data = JSON.parse(event.body);
-  } catch (err) {
-    console.error('Ошибка парсинга JSON:', err);
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Некорректный JSON в теле запроса' }),
-    };
-  }
+    // Парсим полученные данные из формы
+    const body = JSON.parse(event.body);
 
-  const { name, phone, message } = data;
-  console.log('Полученные данные:', { name, phone, message });
+    // Собираем HTML-форму для письма
+    const htmlContent = `
+      <div style="margin: 20px auto;">
+        <h2>Новое сообщение с сайта</h2>
+        <p><strong>Имя:</strong> ${body.name}</p>
+        <p><strong>Телефон/Телеграм:</strong> ${body.phone}</p>
+        <p><strong>Сообщение:</strong><br> ${body.message}</p>
+      </div>
+    `;
 
-  // Валидация данных
-  if (!name || name.length < 2) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Имя должно быть не короче 2 символов' }),
-    };
-  }
-  if (!phone || !/^\+?\d{10,15}$/.test(phone)) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Телефон должен быть валидным номером' }),
-    };
-  }
-  if (!message || message.trim().length === 0) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Сообщение не может быть пустым' }),
-    };
-  }
+    // Создаем объект для отправки email через SMTP
+    let transporter = nodemailer.createTransport({
+      host: 'smtp.yandex.ru', // Для тестирования через ethereal
+      port: 465,
+      secure: false, // true для порта 465, false для других
+      auth: {
+        user: 'SvetlanaVorobueva@yandex.ru', // генерируемый ethereal user
+        pass: process.env.SMTP_PASS, // генерируемый ethereal password
+      },
+    });
 
-  // Настройка транспортера для отправки письма через SMTP
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.yandex.ru',
-    port: 465,
-    secure: true,
-    auth: {
-      user: 'SvetlanaVorobueva@yandex.ru',
-      pass: process.env.SMTP_PASS, // Пароль приложения
-    },
-  });
+    // Отправляем email
+    let info = await transporter.sendMail({
+      from: '"Светлана Воробьева" <SvetlanaVorobueva@yandex.ru>', // От кого
+      to: "SvetlanaVorobueva@yandex.ru", // Замените на email получателя
+      subject: "Новый заказ на дизайн проект", // Тема письма
+      text: body.message, // Текст письма
+      html: htmlContent, // HTML формат письма
+    });
 
-  const mailOptions = {
-    from: '"Светлана Воробьева" <SvetlanaVorobueva@yandex.ru>',
-    to: 'SvetlanaVorobueva@yandex.ru', // Адрес получателя
-    subject: 'Заявка на дизайн проект',
-    text: `Сообщение от ${name} (Телефон: ${phone}):\n\n${message}`,
-  };
+    // Логируем результат
+    console.log(info);
 
-  try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Письмо отправлено:', info.messageId);
-
-    return {
+    // Возвращаем успешный статус
+    callback(null, {
       statusCode: 200,
-      body: JSON.stringify({ message: 'Письмо успешно отправлено!' }),
-    };
+      body: JSON.stringify({ message: "Email успешно отправлен!", info }),
+    });
   } catch (error) {
-    console.error('Ошибка при отправке письма:', error);
-
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        message: 'Не удалось отправить письмо. Проверьте настройки сервера SMTP.',
-      }),
-    };
+    console.error(error);
+    callback(error);
   }
 };
