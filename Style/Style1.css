@@ -234,6 +234,8 @@
 
 	.track {
 		  display: flex;
+		  width: 60%;
+		  height: auto;
 		  gap: 3rem; 
 		  animation: scroll 20s linear infinite; 
 		  will-change: transform;
