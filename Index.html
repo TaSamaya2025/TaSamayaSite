@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="Style/normalize.css">
 	<link rel="stylesheet" href="Style/Style1.css">
 	<link rel="stylesheet" href="Style/Style2.css">
+	<link rel="stylesheet" href="Style/Style3.css">
 	<link rel="icon" href="logo/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="logo/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="logo/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -72,8 +73,7 @@
 <body>
 	<div class="container1 colorwh padding1">
 		<header class="header">
-    		<div class="container1 row padding_head">
-		
+    		<div class="row padding_head">
       			<div class="logo ">
         			<img src="Image/logo.png" alt="Логотип студии">
       			</div>
@@ -93,8 +93,10 @@
 				</div>
     		</div>
     <!-- Основной текст -->
-    		<div id="about" class="main-content">
-      			<h1>ТА САМАЯ</h1><h2>студия дизайна интерьера</h2>
+    		
+      		<div class="for_title1"><h1>ТА САМАЯ</h1><h2>студия дизайна интерьера</h2></div>
+			<img class="new_bac" src="Style/TitlePhoto.png" alt="Картинка для шапки после 500рх">
+			<div id="about" class="main-content">
       				<p class="text1">Дизайн, который решает сложные задачи</p>
       				<p class="text2">Ваша идея — это наш вызов! Мы — студия дизайна интерьеров, <br>специализирующаяся на сложных и нестандартных проектах.</p>
       				<p class="text2">Если вы мечтаете о квартире с интуитивно понятной <br>системой освещения, сауной и джакузи, или хотите создать <br>уникальное пространство в старом фонде — мы знаем, как это сделать!</p>
@@ -312,21 +314,21 @@
   <div class="modal-content">
     <button class="close-btn">&times;</button>
     <h3 class="title_for_modal">ЗАКАЗАТЬ ДИЗАЙН-ПРОЕКТ</h3>
-    <form id="modal-form">
+    <form id="form">
 	  <div class="row2">
 		  <p class="color_text_modal">Вы выбрали тариф - <span id="selected-plan" class="fat_ysl">БАЗА</span></p> 
 		  <p id="selected-price" class="color_text_modal">5300 ₽/м²</p></div>
 		  <p class="color_text_modal2"> Для дальнейшего сотрудничества просим Вас предоставить<br>  необходимую информацию: </p>
-			<input type="hidden" id="hidden-plan"  value=""> 
-  			<input type="hidden" id="hidden-price"  value="">
-		  <input type="text" id="name"  placeholder="Ваше имя" required>
-		  <input type="tel" id="phone"  placeholder="Телефон/ Телеграмм для связи" required>
-		  <textarea id="message" placeholder="Сообщение для нас:"></textarea>
+			<input type="hidden" id="hidden-plan"  name="plan" value="" required> 
+  			<input type="hidden" id="hidden-price"  name="price" value="" required>
+		  <input type="text" id="name"  name="name" placeholder="Ваше имя" required>
+		  <input type="tel" id="phone"  name="phone" placeholder="Телефон/ Телеграмм для связи" required>
+		  <textarea id="message" name="message" placeholder="Сообщение для нас:"></textarea>
 		  <p class="color_text_modal2"> Вы можете написать площадь вашего помещения, чтобы мы до звонка вам, смогли рассчитать стоимость проекта для вас.</p>
 		  <p class="contact-info">
 			Если у вас появились срочные вопросы, то можете связаться с нами по номеру телефона:</p> 
 				<div class="colum"><strong class="phone">+7(911)-905-33-32</strong>
-				<div class="button-container"><button class="submit-button">ОБСУДИТЬ ПРОЕКТ</button></div>
+				<div class="button-container"><button type="submit" class="submit-button">ОБСУДИТЬ ПРОЕКТ</button></div>
 	    	</div>
     </form>
   </div>
@@ -366,7 +368,7 @@
 	</div>
 	<div class="The_form">
     <img class="photo2" src="Image/form.jpg" alt="общая форма">
-    <form id="myForm3" class="colum" onsubmit="submitForm(event)">
+    <form id="myForm3" class="colum">
         <h3>ЗАКАЗАТЬ ДИЗАЙН ПРОЕКТ</h3>
         <input class="dop_color" type="text" id="name3" name="name" placeholder="Ваше имя" required>
         <input class="dop_color" type="tel" id="phone3" name="phone" placeholder="Телефон/ Телеграмм для связи" required>
@@ -376,42 +378,6 @@
     </form>
 </div>
 
-<script>
-        document.getElementById("myForm3").addEventListener("submit", submitForm);
-
-		function submitForm(event) {
-			event.preventDefault(); // Остановить стандартное поведение формы
-
-			const formData = new FormData(event.target);
-			const jsonData = {};
-			formData.forEach((value, key) => {
-				jsonData[key] = value;
-			});
-
-			console.log("Отправляем JSON данные:", JSON.stringify(jsonData));
-
-			const request = new XMLHttpRequest();
-			request.open("POST", "/.netlify/functions/sendEmail");
-			request.setRequestHeader("Content-Type", "application/json");
-
-			// Отправить данные
-			request.onreadystatechange = function () {
-				if (request.readyState === XMLHttpRequest.DONE) {
-					if (request.status === 200) {
-						console.log("Успех:", request.responseText);
-						alert("Ваш запрос успешно отправлен!");
-					} else {
-						console.error("Ошибка:", request.status, request.statusText);
-						alert("Произошла ошибка при отправке запроса.");
-					}
-				}
-			};
-
-			request.send(JSON.stringify(jsonData));
-			// Очистить форму
-			event.target.reset();
-}
-</script>
 	<h3 id="details" class="title_for_blocks marg_for_gallery">ДЕТАЛИ НАШИХ ПРОЕКТОВ</h3>
 	<div class="container5">
 		<div class="gallery">
@@ -446,41 +412,9 @@
 			<a class="no_des" href="mailto:lukia@tasamaya-design.ru?subject=Обратная связь&body=Здравствуйте, я хочу узнать..."><p class="text_footer2"> lukia@tasamaya-design.ru</p></a>
 		</div>
 	</footer>
-	<script>document.getElementById('myForm3').addEventListener('submit', function (event) {
-    event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
-    const form = event.target;
-
-    // Проверка заполненности полей 
-    const name = document.getElementById('name3').value.trim();
-    const phone = document.getElementById('phone3').value.trim();
-    const message = document.getElementById('message3').value.trim();
-
-    if (!name || !phone) {
-        alert('Пожалуйста, заполните все обязательные поля.');
-        return;
-    }
-
-    const formData = new FormData(form);
-
-    fetch(form.action, {
-        method: 'POST',
-        body: formData,
-    })
-        .then(response => {
-            if (response.ok) {
-                alert('Форма успешно отправлена!');
-                form.reset(); 
-            } else {
-                alert('Произошла ошибка при отправке формы.');
-            }
-        })
-        .catch(error => {
-            console.error('Ошибка сети:', error);
-            alert('Ошибка сети. Проверьте подключение к интернету.');
-        });
-});</script>
 	
 	<script src="js/script1.js"></script>
 	<script src="js/script2scroll.js"></script>
+	<script src="js/script3.js"></script>
 </body>
 </html>

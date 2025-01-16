@@ -25,7 +25,7 @@ var modal = document.getElementById('modal');
 var buttons = document.querySelectorAll('.price-button');
 var selectedPlan = document.getElementById('selected-plan');
 var selectedPrice = document.getElementById('selected-price');
-var form = document.getElementById('modal-form');
+var form = document.getElementById('form');
 var closeModalBtn = document.querySelector('.close-btn');
 
 var hiddenPlanField = document.getElementById('hidden-plan');
@@ -37,8 +37,6 @@ buttons.forEach(function (button) {
   button.addEventListener('click', function () {
     selectedPlan.textContent = button.getAttribute('data-plan');
 	selectedPrice.textContent = button.getAttribute('data-price');
-	hiddenPlanField.value = button.getAttribute('data-plan');
-    hiddenPriceField.value = button.getAttribute('data-price');
     modal.style.display = 'flex'; // Показываем модальное окно
 	document.body.classList.add('no-scroll');
   });
@@ -60,8 +58,6 @@ function closeModal() {
 // Очистка формы
 function clearForm() {
   form.reset(); 
-  hiddenPlanField.value = '';
-  hiddenPriceField.value = '';
 }
 
 // Автоматическое изменение высоты текстового поля

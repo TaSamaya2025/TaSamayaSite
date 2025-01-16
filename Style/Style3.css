@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+@media (max-width: 460px) {
+	.buttons {
+        justify-content: center;
+    }
+	.menu-button{
+		text-align: right;
+		width: 7vw; 
+  		height: 6vh;
+		margin-right: 2vw;
+	}
+}
