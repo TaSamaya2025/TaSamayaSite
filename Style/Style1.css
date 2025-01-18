@@ -63,6 +63,10 @@
 		margin: 0;
 		padding: 0;
 		justify-content: space-between;}
+	.row3{display: flex;
+		margin: 0;
+		padding: 0;
+		justify-content: space-between;}
 /* Основной текст */
 	.main-content {
   		text-align: left;
@@ -208,7 +212,7 @@
 		  flex-direction: column;
 		  width: 100%;
 		  height: 84%; /* Высота всей области */
-		  owerfloy-x: auto;
+		  owerflow-x: auto;
 		  margin-top: 6vh;
 		  margin-bottom: 6vh;
 		  background-color: #E0E0E0;
@@ -234,6 +238,7 @@
 		  height: 86%; 
 		  display: flex;
 		  align-items: center;
+		  justify-content: center;
 		  margin-top: 9vh;
 	}
 
@@ -345,7 +350,7 @@
 	    display: block;
 	    width: 100%;
 	    height: auto;
-	    transition: transform 0.3s ease-in-out;
+	    transition: transform 0.9s ease-in-out;
 	}
 	.grid-item .dark-overlay {
       position: absolute;
@@ -377,7 +382,7 @@
 	  justify-content: center;
 	  align-items: center;
 	  opacity: 0;
-	  transition: opacity 0.3s ease-in-out;
+	  transition: opacity 0.2s ease-in-out;
 	  z-index: 1;
 	}
 
@@ -394,7 +399,7 @@
 
 	.grid-item:hover .stage {
 	    opacity: 0;
-	    transition: opacity 0.3s ease-in-out;
+	    transition: opacity 0.1s ease-in-out;
 	}
 
 	.grid-item:hover .overlay {
@@ -434,21 +439,22 @@
 	.fill{
 		background-color:#CECDCD; 
 	}
-	.text3{font-size: 1.2rem;
+	.text3{
+		font-size: 1.2rem;
 		font-weight: 500;
 		color: #3D3B38;}
 	.image-container {
 	  position: relative;
 	  width: 100%;
 	  height: auto; 
-	  overflow: hidden; /* Скрываем лишнее, чтобы изображение не вываливалось */
+	  overflow: hidden; 
 	}
 
 	.image-container img {
 	  width: 100%; 
 	  height: 100%; 
-	  object-fit: cover; /* Указываем, чтобы изображение обрезалось, сохраняя пропорции */
-	  border-radius: 20px; /* Скругленные углы для изображения, чтобы совпадали с контейнером */
+	  object-fit: cover; 
+	  border-radius: 20px; 
 	}
 	.decor{
 		list-style: none;
@@ -599,38 +605,42 @@
 		margin-bottom: 4.2vw;
 	}
 	.submit-button{
-		background-color: #2F476B;
-		  max-width: 15vw;
-		  margin-top: 0.8vw;
-		  text-align: center;
+		display: flex;
+		white-space: nowrap;
+		max-width: 15vw;
+		margin-top: 0.8vw;
+	}
+	.submit-button button{
+		  background-color: #2F476B;
           color: white;
           border: none;
           border-radius: 10px;
           padding: 1.5vh 2vw;
           font-size: 1em;
           cursor: pointer;
+		  text-decoration: none;
 	}
-	.submit-button:hover {
+	.submit-button button:hover {
 	  background: #1259BE;
 	}
-	.submit-button:active {
+	.submit-button button:active {
       background-color: #002a65;
     }
-		.button-container {
-	        display: flex;
-			justify-content: center;}
-		.colum{
-			display: flex;
-			flex-direction: column;
+	.dop_pad{
+		padding-left: 8vw;
+	}
+	.colum{
+	  display: flex;
+	  flex-direction: column;
 		}
-	    .fat_ysl{
-			font-weight: 500;
-			color: #0056b3;
+	.fat_ysl{
+	  font-weight: 500;
+	  color: #0056b3;
 	    }
-	    .dopoln_raz{
-	 	    margin-top: 8vh;
+	.dopoln_raz{
+	  margin-top: 8vh;
 	    }
-		.container {
+	.container {
         display: flex;
         flex-direction: row;
         gap: 2rem;
@@ -639,7 +649,8 @@
     }
 
     .card-wrapper {
-        width: 48vw;
+        flex: 1 1 48%; /* Гибкий элемент: занимает 48%, но может уменьшаться */
+    	max-width: 48%; 
         border-radius: 20px;
         overflow: hidden;
         background: #fff;
@@ -653,8 +664,8 @@
     }
 
     .card {
+		aspect-ratio: 16 / 9;
         width: 100%;
-        height: 42vh; 
         border-radius: 20px;
         position: relative;
         overflow: hidden;
@@ -696,30 +707,30 @@
         opacity: 1;
         transition: opacity 0.3s ease;
     }
-		.card-title {
-				position: absolute;
-				top: 4em;
-				color: white;
-				font-size: 18px;
-				font-weight: 500;
-				padding: 5px 10px;
-				z-index: 2;
-			    text-align: center;
-			}
-		.highlight {
+	.card-title {
+		position: absolute;
+		top: 4em;
+		color: white;
+		font-size: 18px;
+		font-weight: 500;
+		padding: 5px 10px;
+		z-index: 2;
+		text-align: center;
+	}
+	.highlight {
 			font-weight: bold; 
 			color: white; 
-		}
-		.pos_rig{
+	}
+	.pos_rig{
 			right: 2em;
-		}
-		.pos_lef{
+	}
+	.pos_lef{
 			left: 2em;
-		}
-		.text-panel p{
+	}
+	.text-panel p{
 			color: #EFEFEF;
 			font-weight: 400;
-		}
+	}
 	.The_form{
 		display: flex;
 		flex-direction: row;
@@ -735,8 +746,8 @@
 		color: #3D3B38;
 	}
 	.photo2{
-		width: 42vw;
-		height: 40vh;
+		width: 42%;
+		height: 40%;
 		border-radius: 20px;
 	}
 	.dop_color{
@@ -775,13 +786,13 @@
 		border-bottom: 2px solid #3a7aff; 
 	}
 	.padding4{
-		margin-top: 6vh;
+		margin-top: 11%;
 		margin-left: 30.2vw;
 	}
 	.container5{
 		display: flex;
 		flex-direction: column;
-		height: 88vh;
+		height: 100%;
 		margin: 0;
 		padding-left: 6vw;
 		padding-right: 6vw;
@@ -792,7 +803,7 @@
         grid-template: repeat(9, 1fr)/repeat(16, 1fr);
         gap: 1vw;
         width: 100%;
-		height: 90%;
+		height: 100%;
     }
 	.marg_for_gallery{
 		margin-top: 8vh;
@@ -830,6 +841,7 @@
         opacity: 0;
     }
 	footer{
+		margin-top: 6vh; 
 		padding-left: 6vw;
 		padding-right: 6vw;
 		margin-bottom: 6vh;
@@ -851,17 +863,13 @@
 		height: auto;
 		margin-right: 1vw;
 		object-fit: contain;
+		transition: transform 0.3s ease;
 	}
 	.row_for_messenger img:hover{
-		opacity: 50%;
-		width: 4vw;
-		height: auto;
+		transform: scale(1.1);
+		opacity: 0.8; 
 	}
-	.row_for_messenger img:active{
-		opacity: 100%;
-		width: 4vw;
-		height: auto;
-	}
+	
 	.Ta_samaya{
 		font-size: 2rem;
 		display: inline-block;
@@ -936,7 +944,7 @@
   }
 }
 /* Новые стили сайта при его уменьшенном размере */
-@media (max-width: 1320px) {
+@media (max-width: 1270px) {
   .row2.together_row {
     flex-direction: column; /* Перестраиваем на столбик */
     align-items: flex-start; 
@@ -951,14 +959,60 @@
     text-align: left; /* Текст выравнивается по левому краю */
     margin-top: 20px; /* Расстояние между изображением и текстом */
   }
+  	.photo2{
+		width: 100%;
+		height: 35%;
+		border-radius: 20px;
+	}
+	.The_form{
+		flex-direction: column;
+		margin-top: 11vh;
+		padding: 5vh 6vw;
+	}
+	.The_form h3{
+		padding-top: 2.5vh;
+		margin-left: 8rem;
+		margin-top: -0.2em;
+		font-size: 2rem;
+		font-weight: 500;
+	}
+	.padding4{
+		margin-top: 8%;
+		margin-left: 34vw;
+	}
+	#name3 {
+		width: 70vw;
+		font-size: 0.9rem;}
+	#phone3 {
+		width: 70vw;
+		font-size: 0.9rem;}
+	#message3 {
+		width: 70vw;
+		font-size: 0.9rem;
+	}
+	.gallery {
+        gap: 0.8vw;
+		height: 90%;
+    }
+	.text_footer2{
+		font-size: 1.3rem;
+		color: #4C4A48;
+	}
 }
 @media (max-width: 700px) {
+	html, body {
+	  margin: 0;
+	  padding: 0;
+	  overflow-x: hidden;
+	  width: 100%;
+	  max-width: 100%;
+	}
 	.padding1{padding-top: 2vw;
 			  padding-left: 6vw;
 			  padding-right: 6vw;}
 	.logo {
     display: none;
-  }
+    }
 	.header {
     background-image: none;
     height: auto;
@@ -966,22 +1020,22 @@
 	display: grid;
 	max-width: 100%;
     grid-template: repeat(3, auto)/repeat(10, 1fr);
-  }
+ 	}
 	.for_title1{
 		text-align: left;
  		padding-left: 3vw;
 		grid-area: 1 / 1 / 2 / 10;
+		align-items: center;
 	}
 	.for_title1 h1 {
-		font-size: 2.3em;
-		margin-bottom: 0vh;
+		font-size: 36px;
 		font-weight: 500;
 	}
 	.for_title1 h2 {
-		font-size: 0.95em;
-		margin-top: -1vh;
-		margin-bottom: 5vh;
+		font-size: 14.8px;
 		font-weight: 400;
+		margin-bottom: 2vh;
+		margin-top: -1vh;
 	}
 	.new_bac{
 		display: block;
@@ -995,6 +1049,7 @@
   		display: inline-block;
 	    padding-top: 2vh;
 	    grid-area: 1 / 10 / 2 / 11;
+	  	align-items: center;
 	}
   .main-content {
 		padding-left: 3vw;
@@ -1003,8 +1058,8 @@
   }
 	.menu-button{
 		text-align: right;
-		width: 6vw; 
-  		height: 5vh;
+		width: 30px; 
+  		height: 25px;
 		margin-right: 2vw;
 	}
 	.row{
@@ -1054,31 +1109,31 @@
 	.sticky-title {
 		  left: 7vw; /* Фиксация заголовка наверху */
 		  text-align: left;
-		  font-size: 1.4rem;
+		  font-size: 1rem;
 		  font-weight: 500;
 		  z-index: 10; 
-		  padding: 0.5rem;
+		  padding: 0rem 1rem;
+		  margin-top: 3vh;
 	} 
 	.container2 {
 		  position: relative;
 		  display: flex;
 		  flex-direction: column;
 		  width: 100%;
-		  height: 66%; /* Высота всей области */
-		  owerfloy-x: auto;
+		  height: 60%; /* Высота всей области */
+		  owerflow-x: auto;
 		  margin-top: 4vh;
 		  margin-bottom: 5vh;
 		  background-color: #E0E0E0;
 	}
 	.picture_scroll {
-		  margine-top: 0vh;
 		  width: 100%;
-		  height: 86%; 
+		  height: 100%; 
 		  display: flex;
 		  align-items: center;
 	}
 	.track img {
-		  width: 15%; /* Ширина каждого изображения */
+		  width: 14%; /* Ширина каждого изображения */
 		  height: auto;
 		  object-fit: cover;
 		  border-radius: 20px; /* Скругление */
@@ -1087,7 +1142,155 @@
 	.title_for_blocks{
 		font-size: 1.4rem;
 		font-weight: 500;
-		margin-left: 3rem;
-		color: #3D3B38;
+		margin-left: 5rem;
+	}
+	.grid-container {
+	    display: grid;
+	    grid-template-columns: repeat(2, 1fr);
+	    gap: 18px;
+		margin-top: 1vh;
+		margin-bottom: 6vh;
+		padding-left: 6vw;
+		padding-right: 6vw;
+	}
+	.grid-item {
+	    position: relative;
+	    border-radius: 20px;
+	    overflow: hidden;
+	}
+	.grid-item img {
+	    display: block;
+	    width: 100%;
+	    height: auto;
+		transition: transform 0.3s ease-in-out;}
+	
+	.grid-item .overlay p {
+	  color: white;
+	  font-size: 0.8rem;
+	  text-align: center;
+	  margin: 0;
+	}
+	.padding3{
+		padding-left: 1.5em;
+		line-height: 1.4;
+	}
+	.padding_for_fat{
+		margin-top: -0.4rem; 
+	}
+	.fat_text{
+		font-size: 1rem;
+		font-weight: 500;
+		padding-left: 1.5em;
+	}
+	.list{
+		margin-top: -0.6rem;
+		padding-left: 1.5em;
+		font-size: 0.75rem;
+	}
+	.container {
+        display: flex;
+        flex-direction: row;
+		flex-wrap: wrap;
+        gap: 2vh;
+		padding-left: 6vw;
+		padding-right: 6vw;
+    }
+	.card {
+		aspect-ratio: 16 / 9;
+        width: 100%;
+		height: inherit;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+	.card-wrapper {
+        flex: 1 1 100%; /* Карточки занимают всю ширину */
+        max-width: 100%;
+    }
+	.padding4{
+		margin-top: 8%;
+		margin-left: 30vw;
+	}
+	.The_form h3{
+		padding-top: 2vh;
+		margin-left: 2.4rem;
+		margin-top: -0.2em;
+		font-size: 1.4rem;
+		font-weight: 500;
+	}
+	.gallery {
+        display: grid;
+		justify-content: center;
+        grid-template: repeat(9, 1fr)/repeat(16, 1fr);
+        gap: 1vw;
+        width: 100%;
+		height: 80%;
+    }
+	.marg_for_gallery{
+		margin-top: 8vh;
+	}
+	.A{
+		grid-area: 1 / 1 / 7 / 5;
+	}
+	.B{
+		grid-area: 7 / 1 / 10 / 5;
+	}
+	.C{
+		grid-area: 1 / 5 / 5 / 13;
+	}
+	.D{
+		grid-area: 5 / 5 / 10 / 13;
+	}
+	.E{
+		grid-area: 1 / 13 / 4 / 17;
+	}
+	.F{
+		grid-area: 4 / 13 / 7 / 17;
+	}
+	.G{
+		grid-area: 7 / 13 / 10 / 17;
+	}
+	.row3{
+		flex-direction: column;
+		justify-content: center;
+	    margin-bottom: 4vh;}
+	.center{
+		align-items: center;
+		padding-left: 0vw;
+		padding-right: 0vw;
+	}
+	.Ta_samaya{
+		font-size: 2.6rem;
+		display:contents;
+		margin-bottom: 3vh;
+	}
+	.row_for_messenger{
+		flex-direction: row;	
+		align-items: baseline;
+		margin-top: 3vh;	
+	}
+	.row_for_messenger img{
+		width: 5vw;
+		height: auto;
+		margin-left: 0.5vw;
+		margin-right: 0.5vw;
+		object-fit: contain;
+		transition: transform 0.3s ease;
+	}
+	.row_for_messenger img:hover{
+		transform: scale(1.1);
+	}
+	.text_footer2{
+		padding-top: 1.8vh;
+		white-space: nowrap;
+		font-size: 1rem;
+	}
+	.center2{
+		align-items: flex-start;
+		padding-left: 0vw;
+		padding-right: 0vw;
+	}
+	.text_footer{
+		font-size: 0.8rem;
 	}
 }

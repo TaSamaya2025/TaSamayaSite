@@ -1,13 +1,83 @@
 @charset "utf-8";
 /* CSS Document */
 @media (max-width: 460px) {
+	 html, body {
+	  margin: 0;
+	  padding: 0;
+	  overflow-x: hidden;
+	  width: 100%;
+	  max-width: 100%;
+	}
+	 .burger-container{
+		position: relative; 
+  		display: inline-block;
+	    padding-top: 1vh;
+	    grid-area: 1 / 10 / 2 / 11;
+	  	align-items: center;
+	}
 	.buttons {
         justify-content: center;
     }
 	.menu-button{
 		text-align: right;
-		width: 7vw; 
-  		height: 6vh;
+		width: 25px; 
+  		height: 20px;
 		margin-right: 2vw;
+	}
+	.for_title1{
+		text-align: left;
+		margin-top: 1vh;
+ 		padding-left: 3vw;
+		grid-area: 1 / 1 / 2 / 10;
+		align-items: center;
+	}
+	.for_title1 h1 {
+		font-size: 24px;
+		font-weight: 500;
+	}
+	.for_title1 h2 {
+		font-size: 9.9px;
+		font-weight: 400;
+		margin-bottom: 1.5vh;
+		margin-top: -0.6vh;
+	}
+	.grid-container {
+	    display: grid;
+	    grid-template-columns: repeat(2, 1fr);
+	    gap: 14px;
+		margin-top: 1vh;
+		margin-bottom: 6vh;
+		padding-left: 6vw;
+		padding-right: 6vw;
+	}
+	.grid-item {
+	    position: relative;
+	    border-radius: 12px;
+	    overflow: hidden;
+	}
+	.grid-item img {
+	    display: block;
+	    width: 100%;
+	    height: auto;
+		transition: transform 0.3s ease-in-out;}
+	.grid-item .overlay p {
+	  color: white;
+	  font-size: 0.7rem;
+	  text-align: center;
+	  margin: 0;
+	}
+	.grid-item .stage {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    font-size: 1rem;
+	    font-weight: 400;
+	    z-index: 2;
+	}
+	.title_for_blocks{
+		font-size: 1rem;
+		font-weight: 500;
+		margin-left: 3rem;
 	}
 }

@@ -102,6 +102,6 @@
         .right-popup-arrow:active {
             opacity: 100%;
         }
-button {
-    all: unset; /* Убирает все стили кнопки */
-}
+		button {
+			all: unset; /* Убирает все стили кнопки */
+		}

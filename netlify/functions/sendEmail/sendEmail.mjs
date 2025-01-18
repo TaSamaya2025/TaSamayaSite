@@ -21,7 +21,7 @@ exports.handler = async function (event, context, callback) {
     let transporter = nodemailer.createTransport({
       host: 'smtp.yandex.ru', // Для тестирования через ethereal
       port: 465,
-      secure: false, // true для порта 465, false для других
+      secure: true, // true для порта 465, false для других
       auth: {
         user: 'SvetlanaVorobueva@yandex.ru', // генерируемый ethereal user
         pass: process.env.SMTP_PASS, // генерируемый ethereal password
@@ -41,12 +41,18 @@ exports.handler = async function (event, context, callback) {
     console.log(info);
 
     // Возвращаем успешный статус
-    callback(null, {
+    return {
       statusCode: 200,
       body: JSON.stringify({ message: "Email успешно отправлен!", info }),
-    });
+    };
   } catch (error) {
-    console.error(error);
-    callback(error);
+    console.error("Ошибка при отправке email:", error);
+
+    // Возвращаем статус ошибки
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: "Ошибка при отправке email!", error }),
+    };
   }
 };
+
