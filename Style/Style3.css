@@ -11,9 +11,27 @@
 	 .burger-container{
 		position: relative; 
   		display: inline-block;
-	    padding-top: 1vh;
+	    padding-top: 0vh;
 	    grid-area: 1 / 10 / 2 / 11;
 	  	align-items: center;
+	}
+	.padding_head{
+		padding-top: 0vh;
+	}
+    .main-content {
+		padding-left: 3vw;
+		margin-bottom: 0;
+		grid-area: 3 / 1 / 4 / 11;
+    }
+	.menu-button{
+		text-align: right;
+		width: 30px; 
+  		height: 25px;
+		margin-right: 0vw;
+	}
+	.row{
+		justify-content: center;
+		align-items: center;
 	}
 	.buttons {
         justify-content: center;
@@ -22,14 +40,16 @@
 		text-align: right;
 		width: 25px; 
   		height: 20px;
-		margin-right: 2vw;
+		margin-right: 0vw;
 	}
 	.for_title1{
 		text-align: left;
-		margin-top: 1vh;
+		margin-top: 0vh;
  		padding-left: 3vw;
 		grid-area: 1 / 1 / 2 / 10;
 		align-items: center;
+		margin-left: 0vh;
+		margin-bottom: 0vh;
 	}
 	.for_title1 h1 {
 		font-size: 24px;

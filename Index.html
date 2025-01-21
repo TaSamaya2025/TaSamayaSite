@@ -443,12 +443,53 @@
 				<img src="Image/instagram.png" alt="Иконка инстаграмма"></a>
 		</div></div>
 		<div class="line"></div>
-		<div class="row2 center2 marging_footer_text">
-			<div class="colum"><p class="text_footer">
+		<div id = "fottertext" class="row4 marging_footer_text">
+			<div class="colum"><p id = "textfot" class="text_footer">
 				ООО «ЛУЧ»<br>ОГРН 1197547235332<br>ИНН 7813641324<br>Юр. Адрес: 197198, г. Санкт-Петербург, Введенская ул., 22<br>Р/с № 40702810610000602328<br>АО «Тинькофф Банк»<br>К\с 30101810145250000974<br>БИК 044525974<br>
 			</p><p class="text_footer">&copy; <span id="year"></span> Та самая. Все права защищены.</p></div>
 			<a class="no_des" href="mailto:lukia@tasamaya-design.ru?subject=Обратная связь&body=Здравствуйте, я хочу узнать..."><p class="text_footer2"> lukia@tasamaya-design.ru</p></a>
 		</div>
+<script>
+function adjustForScreenSize() {
+    const footer = document.getElementById('fottertext');
+    const textfot = document.getElementById('textfot');
+    const emailLink = document.querySelector('a.no_des');
+
+    if (window.innerWidth <= 700) {
+        // Проверяем, если элементы находятся в нужном родителе
+        if (footer && textfot && emailLink) {
+            // Меняем местами элементы: сначала ссылка, потом текст
+            footer.prepend(emailLink); // Ставим ссылку в начало родителя
+            // или
+            // footer.appendChild(emailLink); // Если хотите в конец
+
+            // Убираем классы и меняем стили
+            footer.classList.remove('row4', 'marging_footer_text');
+            emailLink.style.display = 'block'; // Делаем ссылку блочной
+            emailLink.style.textAlign = 'center'; // Центрируем ссылку
+            textfot.style.textAlign = 'left'; // Прижимаем текст к левому краю
+            textfot.style.marginTop = '10px'; // Добавляем отступ к тексту
+        }
+    } else {
+        // Проверяем, если элементы находятся в нужном родителе
+        if (footer && textfot && emailLink) {
+            // Восстанавливаем порядок элементов: сначала текст, потом ссылка
+            footer.appendChild(textfot); // Ставим текст обратно на место
+
+            // Восстанавливаем классы при увеличении экрана
+            footer.classList.add('row4', 'marging_footer_text');
+            emailLink.style.display = ''; // Возвращаем стиль по умолчанию
+            emailLink.style.textAlign = ''; // Сбрасываем выравнивание
+            textfot.style.textAlign = ''; // Сбрасываем выравнивание текста
+            textfot.style.marginTop = ''; // Сбрасываем отступ
+        }
+    }
+}
+
+// Срабатывает при загрузке страницы и изменении размера окна
+window.addEventListener('resize', adjustForScreenSize);
+window.addEventListener('load', adjustForScreenSize);
+</script>
 	</footer>
 	
 	<script src="js/script1.js"></script>
