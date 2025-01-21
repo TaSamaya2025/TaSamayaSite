@@ -7,15 +7,22 @@ exports.handler = async function (event, context, callback) {
     // Парсим полученные данные из формы
     const body = JSON.parse(event.body);
 
+    console.log("Полученные данные из формы:", body);
+
     // Собираем HTML-форму для письма
     const htmlContent = `
       <div style="margin: 20px auto;">
         <h2>Новое сообщение с сайта</h2>
-        <p><strong>Имя:</strong> ${body.name}</p>
-        <p><strong>Телефон/Телеграм:</strong> ${body.phone}</p>
-        <p><strong>Сообщение:</strong><br> ${body.message}</p>
+        ${body.plan ? `<p><strong>Выьранный план : </strong> ${body.plan}</p>` : ""}
+        ${body.price ? `<p><strong>Выбранная цена : </strong> ${body.price}</p>` : ""}
+        <p><strong>Имя:</strong> ${body.name || "Не указано"}</p>
+        <p><strong>Телефон/Телеграм:</strong> ${body.phone || "Не указано"}</p>
+        <p><strong>Сообщение:</strong><br> ${body.message || "Не указано"}</p>
       </div>
     `;
+
+    console.log("Текст сообщения (body.message):", body.message);
+    console.log("HTML содержимое письма (htmlContent):", htmlContent);
 
     // Создаем объект для отправки email через SMTP
     let transporter = nodemailer.createTransport({
@@ -37,8 +44,7 @@ exports.handler = async function (event, context, callback) {
       html: htmlContent, // HTML формат письма
     });
 
-    // Логируем результат
-    console.log(info);
+    console.log("Результат отправки email:", info);
 
     // Возвращаем успешный статус
     return {

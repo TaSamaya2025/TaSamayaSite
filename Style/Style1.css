@@ -801,22 +801,23 @@
 		margin-top: 11%;
 		margin-left: 30.2vw;
 	}
-	.container5{
+	.container5 {
 		display: flex;
 		flex-direction: column;
-		height: 100%;
+		height: auto;
 		margin: 0;
 		padding-left: 6vw;
 		padding-right: 6vw;
 	}
+
 	.gallery {
-        display: grid;
+		display: grid;
 		justify-content: center;
-        grid-template: repeat(9, 1fr)/repeat(16, 1fr);
-        gap: 1vw;
-        width: 100%;
-		height: 100%;
-    }
+		grid-template: repeat(9, 1fr) / repeat(16, 1fr); 
+		gap: 1vw;
+		width: 100%;
+		height: auto; /* Исправлено */
+	}
 	.marg_for_gallery{
 		margin-top: 8vh;
 	}
@@ -842,12 +843,13 @@
 		grid-area: 7 / 13 / 10 / 17;
 	}
     .gallery img {
-        width: 100%;
-        height: 100%;
-        border-radius: 12px;
-        object-fit: cover;
-        transition: opacity 3s ease;
-    }
+		width: 100%;
+		height: 100%; /* Исправлено */
+		border-radius: 12px;
+		object-fit: cover;
+		-webkit-object-fit: cover; /* Для Safari */
+		transition: opacity 3s ease;
+	}
 
      .gallery img.hidden {
         opacity: 0;
@@ -958,7 +960,10 @@
 /* Новые стили сайта при его уменьшенном размере */
 @media (max-width: 1270px) {
   html, body {
-	  overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+	overflow-x: hidden;
 	}
   .row2.together_row {
     flex-direction: column; /* Перестраиваем на столбик */
@@ -1052,7 +1057,7 @@
 	  padding: 0;
 	  overflow-x: hidden;
 	  width: 100%;
-	  max-width: 100%;
+      height: 100%;
 	}
 	.padding1{padding-top: 2vw;
 			  padding-left: 6vw;
@@ -1240,6 +1245,9 @@
 		margin-top: -0.2em;
 		font-size: 1.4rem;
 		font-weight: 500;
+	}
+	.container5{
+		height: auto;
 	}
 	.gallery {
         display: grid;
