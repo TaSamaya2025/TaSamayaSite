@@ -17,7 +17,7 @@
 	html {
 		scroll-behavior: smooth;
 	}
-	
+
 	.container1{
 		display: grid;
 		max-width: 100%;
@@ -77,13 +77,13 @@
  		padding-left: 5vw;
 	}
     .for_title1 h1 {
-		font-size: 6em;
+		font-size: 96px;
 		margin-bottom: 0vh;
 		font-weight: 500;
 		color: #3D3B38;
 	}
 	.for_title1 h2 {
-		font-size: 2.46em;
+		font-size: 39.4px;
 		margin-top: -2.6vh;
 		margin-bottom: 7vh;
 		font-weight: 400;
@@ -141,7 +141,7 @@
 	  	border-radius: 10px;
 	  	overflow: hidden;
 		text-align: left;
-	  	width: 20vw; 
+	  	width: auto; 
 
 	  /* Скрываем меню с помощью transform */
 	  	transform: translateY(-20px);
@@ -158,6 +158,7 @@
 
 	.nav-links a {font-size: 1em;
 	  	text-decoration: none;
+		white-space: nowrap;
 	  	color: #4C4A48;
 	}
 
@@ -179,7 +180,7 @@
         justify-content: flex-end;
         gap: 2vw;
 		margin-top: 3vh;
-        margin-right: 1vw;
+        margin-right: 2vw;
     }
 
     .buttons button {
@@ -193,10 +194,10 @@
 		  text-decoration: none;
     }
 
-        .buttons button:hover {
+    .buttons button:hover {
           background-color: #1259BE;
         }
-		.buttons button:active {
+	.buttons button:active {
           background-color: #002a65;
         }
 	.buttons button:focus{
@@ -206,17 +207,20 @@
 		text-decoration: none;
 	}
 	/*Второй блок*/
+	* {
+		box-sizing: border-box;
+	}
 	.container2 {
 		  position: relative;
 		  display: flex;
 		  flex-direction: column;
 		  width: 100%;
-		  height: 84%; /* Высота всей области */
-		  owerflow-x: auto;
+		  overflow-x: auto;
 		  margin-top: 6vh;
 		  margin-bottom: 6vh;
 		  background-color: #E0E0E0;
 	}
+	
 
 	.sticky-title {
 		  position: absolute;
@@ -231,7 +235,7 @@
 	} 
 
 	.picture_scroll {
-		  margine-top: 6rem;
+		  margin-top: 5rem;
 		  position: relative;
 		  overflow-x: hidden; 
 		  width: 100%;
@@ -239,15 +243,18 @@
 		  display: flex;
 		  align-items: center;
 		  justify-content: center;
-		  margin-top: 9vh;
 	}
 
 	.track {
-		  display: flex;
-		  gap: 3rem; 
-		  animation: scroll 20s linear infinite; 
+		 display: flex;
+		  gap: 3rem;
+		  animation: scroll 20s linear infinite;
+		  -webkit-animation: scroll 20s linear infinite;
+		  -moz-animation: scroll 20s linear infinite;
 		  will-change: transform;
 		  cursor: grab;
+		  user-select: none; 
+    	  -webkit-user-drag: none;
 	}
 	.picture_scroll:hover .track {
 		  animation-play-state: paused; /* Пауза анимации при наведении */
@@ -255,16 +262,16 @@
 
 	/* Изображения в ленте */
 	.track img {
-		  width: 50%; /* Ширина каждого изображения */
+		  width: 20vw;
 		  height: auto;
 		  object-fit: cover;
-		  border-radius: 20px; /* Скругление */
+		  border-radius: 20px; 
 		  transition: transform 0.3s ease, filter 0.3s ease;
 	}
 
 	.track img:hover {
-		  transform: scale(1.1); /* Увеличение при наведении */
-		  filter: brightness(0.6); /* Затемнение при наведении */
+		  transform: scale(1.1); 
+		  filter: brightness(0.6); 
 	}
 		/*Третий блок*/
 	.container3{
@@ -442,14 +449,14 @@
 	.text3{
 		font-size: 1.2rem;
 		font-weight: 500;
-		color: #3D3B38;}
+		color: #3D3B38;
+	}
 	.image-container {
 	  position: relative;
 	  width: 100%;
 	  height: auto; 
 	  overflow: hidden; 
 	}
-
 	.image-container img {
 	  width: 100%; 
 	  height: 100%; 
@@ -632,6 +639,8 @@
 	.colum{
 	  display: flex;
 	  flex-direction: column;
+	  margin-left: 2.5vw;
+	  margin-top: 1.5vh;
 		}
 	.fat_ysl{
 	  font-weight: 500;
@@ -841,7 +850,7 @@
         opacity: 0;
     }
 	footer{
-		margin-top: 6vh; 
+		margin-top: 4vh; 
 		padding-left: 6vw;
 		padding-right: 6vw;
 		margin-bottom: 6vh;
@@ -940,11 +949,14 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-184%)); /* Двигаем дальше половины ленты */
+    transform: translateX(calc(-48%)); /* Двигаем дальше половины ленты */
   }
 }
 /* Новые стили сайта при его уменьшенном размере */
 @media (max-width: 1270px) {
+  html, body {
+	  overflow-x: hidden;
+	}
   .row2.together_row {
     flex-direction: column; /* Перестраиваем на столбик */
     align-items: flex-start; 
@@ -978,7 +990,7 @@
 	}
 	.padding4{
 		margin-top: 8%;
-		margin-left: 34vw;
+		margin-left: 78%;
 	}
 	#name3 {
 		width: 70vw;
@@ -998,6 +1010,29 @@
 		font-size: 1.3rem;
 		color: #4C4A48;
 	}
+	footer{
+		margin-top: 0vh;
+	}
+	.title_for_blocks{
+		font-size: 1.8rem;
+		font-weight: 500;
+		margin-left: 10rem;
+	}
+	.sticky-title {
+		  position: absolute;
+		  top: 0;
+		  left: 12.6vw; 
+		  text-align: left;
+		  font-size: 1.8rem;
+		  padding: 0.5rem; 
+	} 
+	.The_form h3{
+		padding-top: 2vh;
+		margin-left: 6rem;
+		margin-top: -0.2em;
+		font-size: 1.8rem;
+		font-weight: 500;
+	}
 }
 @media (max-width: 700px) {
 	html, body {
@@ -1011,15 +1046,15 @@
 			  padding-left: 6vw;
 			  padding-right: 6vw;}
 	.logo {
-    display: none;
+    	display: none;
     }
 	.header {
-    background-image: none;
-    height: auto;
-    padding: 2vh 0;
-	display: grid;
-	max-width: 100%;
-    grid-template: repeat(3, auto)/repeat(10, 1fr);
+    	background-image: none;
+    	height: auto;
+    	padding: 2vh 0;
+		display: grid;
+		max-width: 100%;
+    	grid-template: repeat(3, auto)/repeat(10, 1fr);
  	}
 	.for_title1{
 		text-align: left;
@@ -1076,12 +1111,12 @@
 		font-weight: 500;
 	}
 	.nav-links {
-	  	top: 8vh; 
+	  	top: 6vh; 
 		right: 0vw;
 	  	padding-right: 20vh;
 	  	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 	  	border-radius: 10px;
-	  	width: 10vw; 
+	  	width: 42vw; 
 	}
 
 	.nav-links li {
@@ -1115,30 +1150,6 @@
 		  padding: 0rem 1rem;
 		  margin-top: 3vh;
 	} 
-	.container2 {
-		  position: relative;
-		  display: flex;
-		  flex-direction: column;
-		  width: 100%;
-		  height: 60%; /* Высота всей области */
-		  owerflow-x: auto;
-		  margin-top: 4vh;
-		  margin-bottom: 5vh;
-		  background-color: #E0E0E0;
-	}
-	.picture_scroll {
-		  width: 100%;
-		  height: 100%; 
-		  display: flex;
-		  align-items: center;
-	}
-	.track img {
-		  width: 14%; /* Ширина каждого изображения */
-		  height: auto;
-		  object-fit: cover;
-		  border-radius: 20px; /* Скругление */
-		  transition: transform 0.3s ease, filter 0.3s ease;
-	}
 	.title_for_blocks{
 		font-size: 1.4rem;
 		font-weight: 500;
@@ -1209,7 +1220,7 @@
     }
 	.padding4{
 		margin-top: 8%;
-		margin-left: 30vw;
+		margin-left: 60%;
 	}
 	.The_form h3{
 		padding-top: 2vh;
@@ -1221,34 +1232,34 @@
 	.gallery {
         display: grid;
 		justify-content: center;
-        grid-template: repeat(9, 1fr)/repeat(16, 1fr);
-        gap: 1vw;
+        grid-template: repeat(14, 1fr)/repeat(4, 1fr);
+        gap: 2vw;
         width: 100%;
-		height: 80%;
+		height: 100%;
     }
 	.marg_for_gallery{
 		margin-top: 8vh;
 	}
 	.A{
-		grid-area: 1 / 1 / 7 / 5;
+		grid-area: 1 / 1 / 7 / 3;
 	}
 	.B{
-		grid-area: 7 / 1 / 10 / 5;
+		grid-area: 7 / 1 / 10 / 3;
 	}
 	.C{
-		grid-area: 1 / 5 / 5 / 13;
+		grid-area: 5 / 3 / 8 / 5;
 	}
 	.D{
-		grid-area: 5 / 5 / 10 / 13;
+		grid-area: 12 / 3 / 15 / 5;
 	}
 	.E{
-		grid-area: 1 / 13 / 4 / 17;
+		grid-area: 1 / 3 / 5 / 5;
 	}
 	.F{
-		grid-area: 4 / 13 / 7 / 17;
+		grid-area: 8 / 3 / 12 / 5;
 	}
 	.G{
-		grid-area: 7 / 13 / 10 / 17;
+		grid-area: 10 / 1 / 15 / 3;
 	}
 	.row3{
 		flex-direction: column;
@@ -1293,4 +1304,71 @@
 	.text_footer{
 		font-size: 0.8rem;
 	}
+	.submit-button button{
+		font-size: 0.8em;
+		padding: 1.2vh 3.6vw;
+	}
+	.sticky-title {
+		  position: absolute;
+		  top: 0;
+		  left: 10.6vw; 
+		  text-align: left;
+		  font-size: 1.4rem;
+		  padding: 0.5rem; 
+	} 
+	.picture_scroll {
+		  margin-top: 3rem;
+		  position: relative;
+		  overflow-x: hidden; 
+		  width: 100%;
+		  height: 86%; 
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+	}
+
+	.track {
+		 display: flex;
+		  gap: 2rem;
+		  animation: scroll 20s linear infinite;
+		  -webkit-animation: scroll 20s linear infinite;
+		  -moz-animation: scroll 20s linear infinite;
+		  will-change: transform;
+		  cursor: grab;
+	}
+	
+	.track img {
+		  width: 18vw;
+		  height: auto;
+		  object-fit: cover;
+		  border-radius: 20px; 
+		  transition: transform 0.3s ease, filter 0.3s ease;
+	}
+	.pricing-grid {
+	  display: grid;
+	  grid-template: repeat(3, 1fr)/repeat(1, 1fr);
+	  gap: 16px;
+	  background-color: #E0E0E0;
+	  padding: 1vh 6vw;
+	}
+	.pos_rig{
+			left: 0em;
+			right: 0em;
+	}
+	.pos_lef{
+		    left: 0em;
+			right: 0em;
+	}
+	
+	.pricing-card {
+	  border-radius: 38px;
+	}
+	.image-container img {
+	  width: 100%; 
+	  height: 100%; 
+	  object-fit: cover; 
+	  border-radius: 28px; 
+	}
+	footer{
+		margin-top: 5vh;}
 }

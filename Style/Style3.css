@@ -41,11 +41,19 @@
 		margin-bottom: 1.5vh;
 		margin-top: -0.6vh;
 	}
+	.nav-links {
+	  	top: 4vh; 
+		right: 0vw;
+	  	padding-right: 20vh;
+	  	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+	  	border-radius: 10px;
+	  	width: 50vw; 
+	}
 	.grid-container {
 	    display: grid;
-	    grid-template-columns: repeat(2, 1fr);
+	    grid-template-columns: repeat(1, 1fr);
 	    gap: 14px;
-		margin-top: 1vh;
+		margin-top: 0vh;
 		margin-bottom: 6vh;
 		padding-left: 6vw;
 		padding-right: 6vw;
@@ -62,7 +70,7 @@
 		transition: transform 0.3s ease-in-out;}
 	.grid-item .overlay p {
 	  color: white;
-	  font-size: 0.7rem;
+	  font-size: 0.9rem;
 	  text-align: center;
 	  margin: 0;
 	}
@@ -80,4 +88,98 @@
 		font-weight: 500;
 		margin-left: 3rem;
 	}
+	* {
+	  box-sizing: border-box;
+	}
+	.container2 {
+		  position: relative;
+		  display: flex;
+		  flex-direction: column;
+		  width: 100%;
+		  overflow-x: auto;
+		  margin-top: 6vh;
+		  margin-bottom: 6vh;
+		  background-color: #E0E0E0;
+		  align-items: center;
+	}
+
+	.sticky-title {
+		  position: absolute;
+		  top: 0;
+		  left: 8vw; /* Фиксация заголовка наверху */
+		  text-align: left;
+		  font-size: 1rem;
+		  font-weight: 500;
+		  padding: 0.5rem; /* Заголовок будет над остальным содержимым */
+		  color: #3D3B38;
+	} 
+
+	.picture_scroll {
+		  margin-top: 3rem;
+		  position: relative;
+		  overflow-x: hidden; 
+		  width: 100%;
+		  height: 86%; 
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+	}
+
+	.track {
+		 display: flex;
+		  flex-wrap: nowrap;
+		  will-change: transform;
+		  cursor: grab;
+	}
+	/* Изображения в ленте */
+	.track img {
+		  display: block;
+		  width: 24vw;
+		  height: auto;
+		  object-fit: cover;
+		  border-radius: 20px; /* Скругление */
+		  transition: transform 0.3s ease, filter 0.3s ease;
+	}
+	.pricing-card {
+	  border-radius: 38px;
+	  padding: 2.4vw;
+	}
+	.image-container img {
+	  border-radius: 32px; 
+	}
+	.price-button {
+	  background: #2F476B;
+	  color: #fff;
+	  font-size: 1rem;
+	  font-weight: 400;
+	  padding: 1.5vh 2vw;
+	  border: none;
+	  border-radius: 10px;
+	  cursor: pointer;
+	  margin-top: auto;
+	  margin-botton: 4vh;
+	}
+	.decor{
+		font-size: 0.8rem;
+	}
+	.for_1{
+		margin-right: 8.5rem;
+	}
+	.for_2{
+		margin-right: 1.18rem;
+	}
+	.end{
+		margin-bottom: 1rem;
+		margin-right: 0.09rem;
+	}
+	.text3{
+		font-size: 1rem;
+		font-weight: 500;
+		color: #3D3B38;
+	}
+	.padding4{
+		margin-top: 8%;
+		margin-left: 56%;
+	}
+
 }

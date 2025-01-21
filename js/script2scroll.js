@@ -1,57 +1,71 @@
 
 var container = document.getElementById("track");
-    var imagePath = "Image/"; 
-    var totalImages = 8; 
-
-    // Функция загрузки изображений
-    function loadImages() {
-      // Оригинальные изображения
-      for (var i = 1; i <= totalImages; i++) {
-        var img = document.createElement("img");
-        img.src = imagePath + i + ".png";
-        img.alt = "Image " + i;
-        img.className = "image"; 
-        img.dataset.imageSrc = img.src; 
-        container.appendChild(img);
-      }
-
-      // Дублируем изображения для бесшовного скролла
-      for (var j = 1; j <= totalImages; j++) {
-        var duplicateImg = document.createElement("img");
-        duplicateImg.src = imagePath + j + ".png";
-        duplicateImg.className = "image"; 
-        duplicateImg.dataset.imageSrc = duplicateImg.src;  
-        container.appendChild(duplicateImg);
-      }
-    }
-
-	loadImages();
 	
 	function checkDimensions() {
-	  var images = document.querySelectorAll("#track img");
-	  var totalWidth = 0;
+		var images = document.querySelectorAll("#track img");
+		var totalWidth = 0;
 
-	  images.forEach(function (img) {
-		totalWidth += img.offsetWidth; // Суммируем ширину картинок
-	  });
+		images.forEach(function (img) {
+			totalWidth += img.offsetWidth; // Суммируем ширину картинок
+		});
 
-	  container.style.width = totalWidth + "px"; // Устанавливаем ширину
+		// Рассчитываем ширину контейнера в процентах
+		var containerWidth = totalWidth;
+		var containerPercentageWidth = (containerWidth / window.innerWidth) * 100;
+
+		container.style.width = containerPercentageWidth + "%"; // Устанавливаем ширину в процентах
 	}
-
 	checkDimensions();
 
-// Бесконечный скролл
-    container.addEventListener("scroll", function () {
-      var maxScrollLeft = container.scrollWidth - container.clientWidth;
+	const scrollContainer = document.querySelector('.picture_scroll');
+	const scrollTrack = document.querySelector('.track');
 
-      if (container.scrollLeft <= 0) {
-        // Перемещаемся в конец
-        container.scrollLeft = maxScrollLeft - 1;
-      } else if (container.scrollLeft >= maxScrollLeft) {
-        // Перемещаемся в начало
-        container.scrollLeft = 1;
-      }
-    });
+	let isScrollDragging = false;
+	let scrollStartX;
+	let initialScrollLeft;
+
+	// Добавляем событие для начала перетаскивания
+	scrollContainer.addEventListener('mousedown', (e) => {
+		isScrollDragging = true;
+		scrollContainer.classList.add('dragging');
+		scrollStartX = e.pageX - scrollContainer.offsetLeft;
+		initialScrollLeft = scrollContainer.scrollLeft;
+		
+		e.preventDefault();
+	});
+
+	// Обработчик движения мыши
+	scrollContainer.addEventListener('mousemove', (e) => {
+		if (!isScrollDragging) return;
+		e.preventDefault();
+		const currentX = e.pageX - scrollContainer.offsetLeft;
+		const distance = (currentX - scrollStartX) * 2; // Ускорение прокрутки
+		scrollContainer.scrollLeft = initialScrollLeft - distance;
+	});
+
+	// Завершаем перетаскивание
+	scrollContainer.addEventListener('mouseup', () => {
+		isScrollDragging = false;
+		scrollContainer.classList.remove('dragging');
+	});
+
+	// Завершаем перетаскивание, если мышь выходит за пределы контейнера
+	scrollContainer.addEventListener('mouseleave', () => {
+		isScrollDragging = false;
+		scrollContainer.classList.remove('dragging');
+	});
+// Бесконечный скролл
+	 scrollContainer.addEventListener('scroll', function () {
+		const maxScrollPosition = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+		if (scrollContainer.scrollLeft <= 0) {
+			// Перемещаемся в конец
+			scrollContainer.scrollLeft = maxScrollPosition - 1;
+		} else if (scrollContainer.scrollLeft >= maxScrollPosition) {
+			// Перемещаемся в начало
+			scrollContainer.scrollLeft = 1;
+		}
+	});
 
     // Управление колесиком мыши
     container.addEventListener("wheel", function (e) {
@@ -96,7 +110,7 @@ document.querySelectorAll('.image-modal-trigger').forEach(image => {
             const container_scr = document.getElementById('popup-image-container');
             const centerPosition = container_scr.scrollWidth / 2 - container.clientWidth / 2;
             container_scr.scrollLeft = centerPosition;
-        }, 28); 
+        }, 30); 
 		
     });
 });

@@ -95,8 +95,8 @@
     <!-- Основной текст -->
     		
       		<div class="for_title1"><h1>ТА САМАЯ</h1><h2>студия дизайна интерьера</h2></div>
-			<img class="new_bac" src="Style/TitlePhoto.png" alt="Картинка для шапки после 500рх">
-			<div id="about" class="main-content">
+			<img class="new_bac" src="Style/TitlePhoto2.png" alt="Картинка для шапки после 500рх">
+			<div id="about" class="main-content p">
       				<p class="text1">Дизайн, который решает сложные задачи</p>
       				<p class="text2">Ваша идея — это наш вызов! Мы — студия дизайна интерьеров, <br>специализирующаяся на сложных и нестандартных проектах.</p>
       				<p class="text2">Если вы мечтаете о квартире с интуитивно понятной <br>системой освещения, сауной и джакузи, или хотите создать <br>уникальное пространство в старом фонде — мы знаем, как это сделать!</p>
@@ -130,10 +130,49 @@
 		<img class="image-modal-trigger" src="Image/6.png" alt="Картинка для скрола" data-image="6">
 		<img class="image-modal-trigger" src="Image/7.png" alt="Картинка для скрола" data-image="7">
 		<img class="image-modal-trigger" src="Image/8.png" alt="Картинка для скрола" data-image="8">
+		<img class="image-modal-trigger" src="Image/1.png" alt="Картинка для скрола" data-image="1">
+		<img class="image-modal-trigger" src="Image/2.png" alt="Картинка для скрола" data-image="2">
+		<img class="image-modal-trigger" src="Image/3.png" alt="Картинка для скрола" data-image="3">
+		<img class="image-modal-trigger" src="Image/4.png" alt="Картинка для скрола" data-image="4">
+		<img class="image-modal-trigger" src="Image/5.png" alt="Картинка для скрола" data-image="5">
+		<img class="image-modal-trigger" src="Image/6.png" alt="Картинка для скрола" data-image="6">
+		<img class="image-modal-trigger" src="Image/7.png" alt="Картинка для скрола" data-image="7">
+		<img class="image-modal-trigger" src="Image/8.png" alt="Картинка для скрола" data-image="8">
 		</div>
 	  </div>
 	</div>
-	
+<script>
+  // Функция для установки высоты контейнера в зависимости от картинок
+  function setContainerHeight() {
+    var container = document.querySelector('.container2');
+    var track = document.querySelector('.track');
+    var images = document.querySelectorAll('.track img'); // Находим все изображения
+
+    if (container && track && images.length > 0) {
+      // Ширина одной картинки
+      var imgWidth = images[0].offsetWidth;
+
+      // Пропорция (aspect ratio) изображений (высота/ширина), например 9/15
+      var aspectRatio = 23 / 9;
+
+      // Вычисляем высоту одного изображения
+      var imgHeight = imgWidth * aspectRatio;
+
+      // Устанавливаем высоту контейнера, исходя из количества изображений
+      var containerHeight = imgHeight; // Если один ряд изображений
+
+      // Устанавливаем высоту контейнера
+      container.style.height = containerHeight + 'px';
+      console.log('Container height set to:', container.style.height); // Для отладки
+    }
+  }
+
+  // Устанавливаем высоту при загрузке страницы
+  window.addEventListener('load', setContainerHeight);
+
+  // Обновляем высоту при изменении размера окна
+  window.addEventListener('resize', setContainerHeight);
+</script>
 	
 	<div id="popup-modal" class="popup-modal"><span class="close-popup">&times;</span>
 		<button ><img class="popup-arrow left-popup-arrow" src="Image/leftbutton.png" alt="Левая стрелка"></button>
@@ -357,7 +396,7 @@
     <!-- Карточка 2 -->
     <div class="card-wrapper">
       <div class="card">
-        <img src="Image/management.png" alt="Картинка 2"><div class="card-title pos_lef">МЕНЕДЖМЕНТ<br>Мы сделаем все за тебя!</div><p></p>
+        <img src="Image/management3.png" alt="Картинка 2"><div class="card-title pos_lef">МЕНЕДЖМЕНТ<br>Мы сделаем все за тебя!</div>
       </div>
       <div class="text-wrapper">
         <div class="text-panel">
