@@ -529,7 +529,7 @@
 	  background: #fff;
 	  border-radius: 20px;
 	  padding: 4vh 3vw;
-	  width: 30vw;
+	  width: auto;
 	  height: 82vh;
 	  max-width: 500px;
 	  position: relative;
@@ -633,14 +633,17 @@
 	.submit-button button:active {
       background-color: #002a65;
     }
-	.dop_pad{
-		padding-left: 8vw;
-	}
 	.colum{
 	  display: flex;
 	  flex-direction: column;
 	  margin-left: 2.5vw;
 	  margin-top: 1.5vh;
+		}
+	.colum2{
+	  display: flex;
+	  flex-direction: column;
+	  margin-top: 8vh;
+	  align-items: center;
 		}
 	.fat_ysl{
 	  font-weight: 500;
@@ -968,8 +971,8 @@
   }
 
   .colum {
-    text-align: left; /* Текст выравнивается по левому краю */
-    margin-top: 20px; /* Расстояние между изображением и текстом */
+    text-align: left; 
+    margin-top: 20px; 
   }
   	.photo2{
 		width: 100%;
@@ -1033,6 +1036,15 @@
 		font-size: 1.8rem;
 		font-weight: 500;
 	}
+	.modal-content {
+	  padding: 4vh 3vw;
+	  width: auto;
+	  height: 82vh;
+	  max-width: 500px;
+	}
+	.colum2{
+	  margin-right: 2vw;
+		}
 }
 @media (max-width: 700px) {
 	html, body {
@@ -1342,13 +1354,11 @@
 		  height: auto;
 		  object-fit: cover;
 		  border-radius: 20px; 
-		  transition: transform 0.3s ease, filter 0.3s ease;
 	}
 	.pricing-grid {
 	  display: grid;
 	  grid-template: repeat(3, 1fr)/repeat(1, 1fr);
 	  gap: 16px;
-	  background-color: #E0E0E0;
 	  padding: 1vh 6vw;
 	}
 	.pos_rig{
@@ -1371,4 +1381,67 @@
 	}
 	footer{
 		margin-top: 5vh;}
+	.modal {
+	  display: none; 
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background: rgba(0, 0, 0, 0.4);
+	  justify-content: center;
+	  align-items: center;
+	  z-index: 100;
+	}
+
+	.modal-content {
+	  border-radius: 20px;
+	  padding: 4vh 5vw;
+	  width: 80vw;
+	  height: 72vh;
+	  max-width: 500px;
+	}
+	input{
+	  width: 100%;
+	  height: 1vh;
+	  padding: 2vh 0vw;
+	  margin-bottom:1em; 
+	  border-bottom: 2px solid #dcdcdc;
+	  font-size: 0.8rem;
+	}
+	textarea {
+	  width: 100%;
+	  padding: 3vh 0vw;
+	  margin-bottom: 1vh;
+	  border-bottom: 2px solid #dcdcdc;
+	  font-size: 0.8rem;
+	  outline: none;
+	  background: transparent;
+	  height: 1vh; 
+	}
+	.title_for_modal{
+		font-size: 1.2rem;
+		font-weight: 500;
+		margin-bottom: 3.2vw;
+	}
+	.color_text_modal{
+		font-size: 0.8rem;
+		font-weight: 400;
+	}
+	.color_text_modal2{
+		font-size: 0.7rem;
+		font-weight: 400;
+		margin-top: -0.4vh;
+	}
+	.contact-info{
+		font-size: 0.8rem;
+		font-weight: 400;
+	}
+	.phone{
+		font-size: 1rem;
+		font-weight: 500;
+	}
+	.colum2{
+	  margin-right: 10vw;
+		}
 }
