@@ -105,3 +105,22 @@
 		button {
 			all: unset; /* Убирает все стили кнопки */
 		}
+@media (max-width: 700px) {
+		.popup-slider-image {
+            height: 40vh;
+            margin: 0 10px;
+			border-radius: 20px;
+			flex-shrink: 0;
+        }
+	    .left-popup-arrow {
+            left: 25px;
+			width: 6%;
+			height: auto;
+        }
+
+        .right-popup-arrow {
+            right: 25px;
+			width: 6%;
+			height: auto;
+        }
+}

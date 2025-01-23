@@ -43,11 +43,15 @@
 		margin-right: 0vw;
 	}
 	.for_title1{
+		display: flex;
+		flex-direction: column; /* Убираем все элементы в столбик */
+		align-items: flex-start; /* Выравниваем по левому краю */
+		justify-content: flex-start; /* Выравниваем по верхнему краю */
+		width: auto;
 		text-align: left;
 		margin-top: 0vh;
  		padding-left: 3vw;
 		grid-area: 1 / 1 / 2 / 10;
-		align-items: center;
 		margin-left: 0vh;
 		margin-bottom: 0vh;
 	}
@@ -154,7 +158,7 @@
 	/* Изображения в ленте */
 	.track img {
 		  display: block;
-		  width: 24vw;
+		  width: 30vw;
 		  height: auto;
 		  object-fit: cover;
 		  border-radius: 20px; /* Скругление */
@@ -199,10 +203,17 @@
 	}
 	.padding4{
 		margin-top: 8%;
-		margin-left: 56%;
+		margin-left: 50%;
 	}
 	.colum2{
-	  margin-right: 16vw;
+	  margin-top: 6vh;
 		}
-
+	.dop_color{
+		margin-left: 1.5rem;
+	}
+	.The_form h3 {
+        margin-left: 1.5rem;
+        font-size: 1rem;
+    }
+	
 }

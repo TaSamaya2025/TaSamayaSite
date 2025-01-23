@@ -10,6 +10,7 @@
 		margin: 0;
     	padding: 0;
 		width: 100%;
+		overflow-x: hidden;
 		height: 100%;
 		font-family: 'Inter', sans-serif;
 		background-color: #FDFDFD;
@@ -110,7 +111,8 @@
 		margin-bottom: 6.5vh;
 		font-weight: 500;
 		color: #3D3B38;
-		
+		word-wrap: break-word;
+  		word-break: break-word;
 	}
 	.text2 {
 	  	font-size: 0.9em;
@@ -118,6 +120,8 @@
 		margin-bottom: 3vh;
 		font-weight: 500;
 		color: #3D3B38;
+		word-wrap: break-word;
+  		word-break: break-word;
 	}
 
 /* Навигация */
@@ -260,6 +264,7 @@
 		  display: flex;
 		  align-items: center;
 		  justify-content: center;
+		  -webkit-overflow-scrolling: touch;
 	}
 
 	.track {
@@ -630,12 +635,14 @@
 	}
 	.submit-button{
 		display: flex;
-		white-space: nowrap;
-		max-width: 15vw;
+		width: auto;
+		justify-content: center;
+        align-items: center;
 		margin-top: 0.8vw;
 	}
 	.submit-button button{
 		  background-color: #2F476B;
+		  white-space: nowrap;
           color: white;
           border: none;
           border-radius: 10px;
@@ -643,6 +650,7 @@
           font-size: 1em;
           cursor: pointer;
 		  text-decoration: none;
+		  flex-shrink: 0;
 	}
 	.submit-button button:hover {
 	  background: #1259BE;
@@ -661,6 +669,7 @@
 	  flex-direction: column;
 	  margin-top: 8vh;
 	  align-items: center;
+	 justify-content: center;
 		}
 	.fat_ysl{
 	  font-weight: 500;
@@ -963,6 +972,28 @@
     	overflow: hidden;
 			
 	}
+	.insta{position: relative;
+		display: inline-block;}
+	.insta .tooltip {
+		display: none; 
+		position: absolute;
+		bottom: 115%; 
+		transform: translateX(-50%);
+		background-color: #FDFDFD; 
+		color: #4C4A48;
+		line-height: 1.2rem;
+		padding: 1rem 2rem; 
+		border: 1px solid #ccc; 
+		border-radius: 10px; 
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+		font-size: 0.8rem; 
+		white-space: nowrap;
+		text-align: center;
+		z-index: 10; 
+	}
+	.insta:hover .tooltip {
+		display: block; 
+	}
 }
 
 /* Анимация прокрутки */
@@ -971,7 +1002,7 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-48%)); /* Двигаем дальше половины ленты */
+    transform: translateX(calc(-38.4%)); /* Двигаем дальше половины ленты */
   }
 }
 /* Новые стили сайта при его уменьшенном размере */
@@ -1015,7 +1046,7 @@
 	}
 	.padding4{
 		margin-top: 8%;
-		margin-left: 78%;
+		margin-left: 70%;
 	}
 	#name3 {
 		width: 70vw;
@@ -1064,9 +1095,6 @@
 	  height: 82vh;
 	  max-width: 500px;
 	}
-	.colum2{
-	  margin-right: 2vw;
-		}
 }
 @media (max-width: 700px) {
 	html, body {
@@ -1093,10 +1121,14 @@
 		margin-bottom: 2vh;
  	}
 	.for_title1{
+		display: flex;
+		flex-direction: column; /* Убираем все элементы в столбик */
+		align-items: flex-start; /* Выравниваем по левому краю */
+		justify-content: flex-start; /* Выравниваем по верхнему краю */
+		width: auto;
 		text-align: left;
  		padding-left: 3vw;
 		grid-area: 1 / 1 / 2 / 10;
-		align-items: center;
 		margin-left: 0vh;
 		margin-top: 0vh;
         margin-bottom: 0vh;
@@ -1179,6 +1211,7 @@
         gap: 2vw;
 		margin-top: 0vh;
         margin-bottom: 2vh;
+		margin-right: 0rem;
     }
 	.buttons button {
           border-radius: 10px;
@@ -1226,7 +1259,7 @@
 	  margin: 0;
 	}
 	.padding3{
-		padding-left: 1.5em;
+		padding-left: 1.18em;
 		line-height: 1.4;
 	}
 	.padding_for_fat{
@@ -1239,7 +1272,7 @@
 	}
 	.list{
 		margin-top: -0.6rem;
-		padding-left: 1.5em;
+		padding-left: 1.18em;
 		font-size: 0.75rem;
 	}
 	.container {
@@ -1262,10 +1295,7 @@
         flex: 1 1 100%; /* Карточки занимают всю ширину */
         max-width: 100%;
     }
-	.padding4{
-		margin-top: 8%;
-		margin-left: 60%;
-	}
+
 	.The_form h3{
 		padding-top: 2vh;
 		margin-left: 2.4rem;
@@ -1344,16 +1374,33 @@
 		font-size: 1rem;
 	}
 	.center2{
-		align-items: flex-start;
 		padding-left: 0vw;
 		padding-right: 0vw;
 	}
 	.text_footer{
 		font-size: 0.8rem;
 	}
+	.submit-button{
+		display: flex;
+		width: auto;
+		justify-content: center;
+        align-items: center;
+	}
 	.submit-button button{
-		font-size: 0.8em;
-		padding: 1.2vh 3.6vw;
+		  background-color: #2F476B;
+		  white-space: nowrap;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          padding: 1.5vh 2.5vw;
+          font-size: 0.8em;
+          cursor: pointer;
+		  text-decoration: none;
+		  flex-shrink: 0;
+	}	
+	.padding4{
+		margin-top: 10%;
+		margin-left: 56%;
 	}
 	.sticky-title {
 		  position: absolute;
@@ -1477,6 +1524,6 @@
 		font-weight: 500;
 	}
 	.colum2{
-	  margin-right: 10vw;
+	  margin-top: 10vh;
 		}
 }

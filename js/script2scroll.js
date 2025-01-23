@@ -1,78 +1,108 @@
-
 var container = document.getElementById("track");
-	
-	function checkDimensions() {
-		var images = document.querySelectorAll("#track img");
-		var totalWidth = 0;
 
-		images.forEach(function (img) {
-			totalWidth += img.offsetWidth; // Суммируем ширину картинок
-		});
+function checkDimensions() {
+    var images = document.querySelectorAll("#track img");
+    var totalWidth = 0;
 
-		// Рассчитываем ширину контейнера в процентах
-		var containerWidth = totalWidth;
-		var containerPercentageWidth = (containerWidth / window.innerWidth) * 100;
-
-		container.style.width = containerPercentageWidth + "%"; // Устанавливаем ширину в процентах
-	}
-	checkDimensions();
-
-	const scrollContainer = document.querySelector('.picture_scroll');
-	const scrollTrack = document.querySelector('.track');
-
-	let isScrollDragging = false;
-	let scrollStartX;
-	let initialScrollLeft;
-
-	// Добавляем событие для начала перетаскивания
-	scrollContainer.addEventListener('mousedown', (e) => {
-		isScrollDragging = true;
-		scrollContainer.classList.add('dragging');
-		scrollStartX = e.pageX - scrollContainer.offsetLeft;
-		initialScrollLeft = scrollContainer.scrollLeft;
-		
-		e.preventDefault();
-	});
-
-	// Обработчик движения мыши
-	scrollContainer.addEventListener('mousemove', (e) => {
-		if (!isScrollDragging) return;
-		e.preventDefault();
-		const currentX = e.pageX - scrollContainer.offsetLeft;
-		const distance = (currentX - scrollStartX) * 2; // Ускорение прокрутки
-		scrollContainer.scrollLeft = initialScrollLeft - distance;
-	});
-
-	// Завершаем перетаскивание
-	scrollContainer.addEventListener('mouseup', () => {
-		isScrollDragging = false;
-		scrollContainer.classList.remove('dragging');
-	});
-
-	// Завершаем перетаскивание, если мышь выходит за пределы контейнера
-	scrollContainer.addEventListener('mouseleave', () => {
-		isScrollDragging = false;
-		scrollContainer.classList.remove('dragging');
-	});
-// Бесконечный скролл
-	 scrollContainer.addEventListener('scroll', function () {
-		const maxScrollPosition = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-
-		if (scrollContainer.scrollLeft <= 0) {
-			// Перемещаемся в конец
-			scrollContainer.scrollLeft = maxScrollPosition - 1;
-		} else if (scrollContainer.scrollLeft >= maxScrollPosition) {
-			// Перемещаемся в начало
-			scrollContainer.scrollLeft = 1;
-		}
-	});
-
-    // Управление колесиком мыши
-    container.addEventListener("wheel", function (e) {
-      e.preventDefault();
-      container.scrollLeft += e.deltaY > 0 ? 100 : -100; 
+    images.forEach(function (img) {
+        totalWidth += img.offsetWidth; // Суммируем ширину картинок
     });
 
+    // Рассчитываем ширину контейнера в процентах
+    var containerWidth = totalWidth;
+    var containerPercentageWidth = (containerWidth / window.innerWidth) * 100;
+
+    container.style.width = containerPercentageWidth + "%"; // Устанавливаем ширину в процентах
+}
+checkDimensions();
+
+const scrollContainer = document.querySelector('.picture_scroll');
+const scrollTrack = document.querySelector('.track');
+
+let isScrollDragging = false;
+let scrollStartX;
+let initialScrollLeft;
+
+// Флаг, чтобы определить, когда прокручиваем вручную
+let isUserScrolling = false;
+
+// Добавляем событие для начала перетаскивания
+scrollContainer.addEventListener('mousedown', (e) => {
+    isScrollDragging = true;
+    scrollContainer.classList.add('dragging');
+    scrollStartX = e.pageX - scrollContainer.offsetLeft;
+    initialScrollLeft = scrollContainer.scrollLeft;
+    
+    e.preventDefault();
+});
+
+// Обработчик движения мыши
+scrollContainer.addEventListener('mousemove', (e) => {
+    if (!isScrollDragging) return;
+    e.preventDefault();
+    const currentX = e.pageX - scrollContainer.offsetLeft;
+    const distance = (currentX - scrollStartX) * 2; // Ускорение прокрутки
+    scrollContainer.scrollLeft = initialScrollLeft - distance;
+});
+
+// Завершаем перетаскивание
+scrollContainer.addEventListener('mouseup', () => {
+    isScrollDragging = false;
+    scrollContainer.classList.remove('dragging');
+});
+
+// Завершаем перетаскивание, если мышь выходит за пределы контейнера
+scrollContainer.addEventListener('mouseleave', () => {
+    isScrollDragging = false;
+    scrollContainer.classList.remove('dragging');
+});
+
+// Бесконечный скролл
+scrollContainer.addEventListener('scroll', function () {
+    if (isUserScrolling) return; // Не делать бесконечный скролл, если пользователь прокручивает вручную
+
+    const maxScrollPosition = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+    if (scrollContainer.scrollLeft <= 0) {
+        // Перемещаемся в конец
+        scrollContainer.scrollLeft = maxScrollPosition - 1;
+    } else if (scrollContainer.scrollLeft >= maxScrollPosition) {
+        // Перемещаемся в начало
+        scrollContainer.scrollLeft = 1;
+    }
+
+    // Если контейнер прокручивается до конца, то обновляем картинки
+    if (scrollContainer.scrollLeft >= maxScrollPosition || scrollContainer.scrollLeft <= 0) {
+        updateTrack(); // Обновляем состояние контента
+    }
+});
+
+// Управление колесиком мыши
+container.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    isUserScrolling = true; // Устанавливаем флаг, что пользователь прокручивает вручную
+    container.scrollLeft += e.deltaY > 0 ? 100 : -100;
+
+    // Ожидание завершения прокрутки, чтобы восстановить флаг
+    clearTimeout(container.scrollTimeout);
+    container.scrollTimeout = setTimeout(function() {
+        isUserScrolling = false;
+    }, 100);
+});
+
+// Функция для обновления картинок
+function updateTrack() {
+    const images = document.querySelectorAll("#track img");
+
+    // Если картинок меньше 2, добавляем новые
+    if (images.length < 2) {
+        const img = document.createElement('img');
+        img.src = "path_to_new_image"; // Путь к новой картинке
+        img.alt = "New Image";
+        scrollTrack.appendChild(img); // Добавляем новую картинку в конец
+        checkDimensions(); // Пересчитываем размеры
+    }
+}
 
 // Открытие модального окна
 var openModalButtons = document.querySelectorAll('.image-modal-trigger');
