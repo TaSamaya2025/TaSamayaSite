@@ -626,6 +626,7 @@
 		color: #3D3B38;
 		font-size: 1rem;
 		font-weight: 400;
+		margin-top: 2.5vh;
 	}
 	.phone{
 		font-size: 1.2rem;
@@ -894,14 +895,13 @@
 	}
 	.row_for_messenger{
 		display: flex;
-		flex-direction: row;	
-		align-items: baseline;
-		
+		flex-direction: row;
+		justify-content: flex-end;
 	}
 	.row_for_messenger img{
 		width: 3vw;
 		height: auto;
-		margin-right: 1vw;
+		margin-left: 1vw;
 		object-fit: contain;
 		transition: transform 0.3s ease;
 	}
@@ -969,30 +969,19 @@
 		display: block; 
 	}
 	 .no-scroll {
-    	overflow: hidden;
-			
+    	overflow: hidden;	
 	}
-	.insta{position: relative;
-		display: inline-block;}
-	.insta .tooltip {
-		display: none; 
-		position: absolute;
-		bottom: 115%; 
-		transform: translateX(-50%);
-		background-color: #FDFDFD; 
+	.meta{
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+	.insta { 
 		color: #4C4A48;
-		line-height: 1.2rem;
-		padding: 1rem 2rem; 
-		border: 1px solid #ccc; 
-		border-radius: 10px; 
-		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
-		font-size: 0.8rem; 
-		white-space: nowrap;
-		text-align: center;
-		z-index: 10; 
-	}
-	.insta:hover .tooltip {
-		display: block; 
+		font-size: 0.5rem; 
+		white-space: wrap; 
+		text-align: end;
+		margin-top: -0.05rem;
 	}
 }
 
@@ -1526,4 +1515,22 @@
 	.colum2{
 	  margin-top: 10vh;
 		}
+	.row_for_messenger{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.meta{
+		display: flex;
+		flex-direction: column;
+		width: 30%;
+		justify-content: center;
+	}
+	.insta { 
+		color: #4C4A48;
+		font-size: 0.4rem; 
+		word-wrap: break-word;
+		text-align: center;
+		margin-top: 0.5rem;
+	}
 }
