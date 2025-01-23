@@ -82,7 +82,7 @@
 		flex-direction: column; /* Убираем все элементы в столбик */
 		align-items: flex-start; /* Выравниваем по левому краю */
 		justify-content: flex-start; /* Выравниваем по верхнему краю */
-		width: auto; /* Ширина контейнера 100% от родительского */
+		width: auto; 
 		margin-left: 5vw;
 		text-align: left;
 		margin-top: 7.8vh;

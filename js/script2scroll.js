@@ -56,7 +56,32 @@ scrollContainer.addEventListener('mouseleave', () => {
     isScrollDragging = false;
     scrollContainer.classList.remove('dragging');
 });
+// Для мобильных устройств (сенсорное взаимодействие)
+scrollContainer.addEventListener('touchstart', (e) => {
+    isScrollDragging = true;
+    scrollContainer.classList.add('dragging');
+    scrollStartX = e.touches[0].pageX - scrollContainer.offsetLeft;
+    initialScrollLeft = scrollContainer.scrollLeft;
+    e.preventDefault();
+});
 
+scrollContainer.addEventListener('touchmove', (e) => {
+    if (!isScrollDragging) return;
+    e.preventDefault();
+    const currentX = e.touches[0].pageX - scrollContainer.offsetLeft;
+    const distance = (currentX - scrollStartX) * 2; // Ускорение прокрутки
+    scrollContainer.scrollLeft = initialScrollLeft - distance;
+});
+
+scrollContainer.addEventListener('touchend', () => {
+    isScrollDragging = false;
+    scrollContainer.classList.remove('dragging');
+});
+
+scrollContainer.addEventListener('touchcancel', () => {
+    isScrollDragging = false;
+    scrollContainer.classList.remove('dragging');
+});
 // Бесконечный скролл
 scrollContainer.addEventListener('scroll', function () {
     if (isUserScrolling) return; // Не делать бесконечный скролл, если пользователь прокручивает вручную

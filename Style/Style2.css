@@ -109,7 +109,7 @@
 		.popup-slider-image {
             height: 40vh;
             margin: 0 10px;
-			border-radius: 20px;
+			border-radius: 12px;
 			flex-shrink: 0;
         }
 	    .left-popup-arrow {
