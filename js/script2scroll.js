@@ -63,7 +63,7 @@ scrollContainer.addEventListener('touchstart', (e) => {
     scrollStartX = e.touches[0].pageX - scrollContainer.offsetLeft;
     initialScrollLeft = scrollContainer.scrollLeft;
     e.preventDefault();
-});
+}, { passive: true });
 
 scrollContainer.addEventListener('touchmove', (e) => {
     if (!isScrollDragging) return;
@@ -71,7 +71,7 @@ scrollContainer.addEventListener('touchmove', (e) => {
     const currentX = e.touches[0].pageX - scrollContainer.offsetLeft;
     const distance = (currentX - scrollStartX) * 2; // Ускорение прокрутки
     scrollContainer.scrollLeft = initialScrollLeft - distance;
-});
+}, { passive: true });
 
 scrollContainer.addEventListener('touchend', () => {
     isScrollDragging = false;
