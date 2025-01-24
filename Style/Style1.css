@@ -78,11 +78,8 @@
  		padding-left: 5vw;
 	}
 	.for_title1 {
-		display: flex;
-		flex-direction: column; /* Убираем все элементы в столбик */
-		align-items: flex-start; /* Выравниваем по левому краю */
-		justify-content: flex-start; /* Выравниваем по верхнему краю */
-		width: auto; 
+		display: block; 
+		width: 38.1vw; 
 		margin-left: 5vw;
 		text-align: left;
 		margin-top: 7.8vh;
@@ -90,8 +87,9 @@
 	}
 
 	.for_title1 h1, .for_title1 h2 {
-		width: 100%; /* Заголовок и подзаголовок занимают всю ширину контейнера */
-		margin: 0; /* Убираем внешние отступы */
+		width: 100%; 
+		margin: 0; 
+		white-space: nowrap;
 	}
 
 	.for_title1 h1 {
@@ -892,6 +890,7 @@
 		align-items: baseline;
 		padding-left: 3vw;
 		padding-right: 1vw;
+		padding-bottom: 1vh;
 	}
 	.row_for_messenger{
 		display: flex;
@@ -911,7 +910,7 @@
 	}
 	
 	.Ta_samaya{
-		font-size: 2rem;
+		font-size: 2.4rem;
 		display: inline-block;
 		font-weight: 500;
 		color: #4C4A48;
@@ -981,7 +980,7 @@
 		font-size: 0.5rem; 
 		white-space: wrap; 
 		text-align: end;
-		margin-top: -0.05rem;
+		margin-top: 0.4rem;
 	}
 }
 
@@ -1109,18 +1108,20 @@
 		margin-top: 4vh;
 		margin-bottom: 2vh;
  	}
-	.for_title1{
-		display: flex;
-		flex-direction: column; /* Убираем все элементы в столбик */
-		align-items: flex-start; /* Выравниваем по левому краю */
-		justify-content: flex-start; /* Выравниваем по верхнему краю */
-		width: auto;
-		text-align: left;
- 		padding-left: 3vw;
+	.for_title1 {
+		display: block; 
+		width: 38.1vw; 
+		padding-left: 3vw;
 		grid-area: 1 / 1 / 2 / 10;
 		margin-left: 0vh;
 		margin-top: 0vh;
         margin-bottom: 0vh;
+	}
+
+	.for_title1 h1, .for_title1 h2 {
+		width: 100%; 
+		margin: 0; 
+		white-space: nowrap;
 	}
 	.for_title1 h1 {
 		font-size: 36px;
