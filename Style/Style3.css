@@ -50,12 +50,14 @@
 	.for_title1 h1 {
 		font-size: 24px;
 		font-weight: 500;
+		text-align: justify; 
 	}
 	.for_title1 h2 {
 		font-size: 9.9px;
 		font-weight: 400;
 		margin-bottom: 1.5vh;
 		margin-top: -0.6vh;
+		text-align: justify; 
 	}
 	.nav-links {
 	  	top: 4vh; 
