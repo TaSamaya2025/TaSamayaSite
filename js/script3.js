@@ -83,6 +83,9 @@
 			  if (request.status === 200) {
 				console.log("Успех:", request.responseText);
 				alert("Ваш запрос успешно отправлен!");
+				  
+				  window.location.href = "thank.html";
+				  
 			  } else {
 				console.error("Ошибка:", request.status, request.statusText);
 				alert("Произошла ошибка при отправке запроса.");

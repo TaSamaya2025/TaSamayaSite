@@ -96,7 +96,6 @@
 		font-size: 96px;
 		font-weight: 500;
 		color: #3D3B38;
-		text-align: justify; 
 	}
 
 	.for_title1 h2 {
@@ -104,7 +103,6 @@
 		font-weight: 400;
 		color: #3D3B38;
 		margin-top: -2.6vh;
-		text-align: justify; 
 	}
 	.text1{
 		font-size: 1.6em;
@@ -1109,6 +1107,7 @@
     	grid-template: repeat(3, auto)/repeat(10, 1fr);
 		margin-top: 4vh;
 		margin-bottom: 2vh;
+		border-radius: 0px;
  	}
 	.for_title1 {
 		display: block; 
@@ -1128,14 +1127,12 @@
 	.for_title1 h1 {
 		font-size: 36px;
 		font-weight: 500;
-		text-align: justify; 
 	}
 	.for_title1 h2 {
 		font-size: 14.8px;
 		font-weight: 400;
 		margin-bottom: 2vh;
 		margin-top: -1vh;
-		text-align: justify; 
 	}
 	.new_bac{
 		display: block;
