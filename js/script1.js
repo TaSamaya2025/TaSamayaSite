@@ -89,26 +89,35 @@ document.getElementById('scrollButton').addEventListener('click', function() {
 
 // Анимация в конце, зображения для каждой области
 const imagesByArea = {
-  A: ["Image/24.png", "Image/25.png", "Image/27.png", "Image/28.png", "Image/29.png", "Image/30.png", "Image/31.png", "Image/32.png", "Image/33.png"],
-  B: ["Image/21.png", "Image/41.png", "Image/43.png", "Image/10.png", "Image/14.png", "Image/16.png"],
-  C: ["Image/17.png", "Image/18.png", "Image/19.png", "Image/20.png", "Image/21.png", "Image/22.png"],
-  D: ["Image/35.png", "Image/36.png", "Image/37.png", "Image/38.png", "Image/39.png", "Image/42.png", "Image/40.png"],
-  E: ["Image/9.png", "Image/10.png", "Image/11.png"],
-  F: ["Image/12.png", "Image/11.png", "Image/13.png"],
-  G: ["Image/14.png", "Image/15.png", "Image/16.png"],};
-
-const galleryItems = document.querySelectorAll(".gallery img");
-
+  A: ["Image/Та_самая_интерьер_25.png", "Image/Та_самая_интерьер_26.png", "Image/Та_самая_интерьер_27.png", "Image/Та_самая_интерьер_28.png", "Image/Та_самая_интерьер_29.png", "Image/Та_самая_интерьер_30.png", "Image/Та_самая_интерьер_31.png"],
+  B: ["Image/Та_самая_интерьер_16.png", "Image/Та_самая_интерьер_17.png", "Image/Та_самая_интерьер_18.png", 
+	  "Image/Та_самая_интерьер_19.png", "Image/Та_самая_интерьер_20.png"],
+  C: ["Image/Та_самая_интерьер_10.png", "Image/Та_самая_интерьер_11.png", "Image/Та_самая_интерьер_12.png", 
+	  "Image/Та_самая_интерьер_13.png", "Image/Та_самая_интерьер_14.png", "Image/Та_самая_интерьер_15.png"],
+  D: ["Image/Та_самая_интерьер_21.png", "Image/Та_самая_интерьер_22.png", "Image/Та_самая_интерьер_23.png", 
+	  "Image/Та_самая_интерьер_24.png"],
+  E: ["Image/Та_самая_фото_интерьер.png", "Image/Та_самая_фото_интерьер_2.png", "Image/Та_самая_фото_интерьер_3.png"],
+  F: ["Image/Та_самая_фото_интерьер_4.png", "Image/Та_самая_фото_интерьер_5.png", "Image/Та_самая_фото_интерьер_6.png"],
+  G: ["Image/Та_самая_фото_интерьер_7.png", "Image/Та_самая_фото_интерьер_8.png", 
+	  "Image/Та_самая_фото_интерьер_9.png"],};
 // Функция для смены изображения в области
 function changeImage(areaClass) {
-  const areaImages = imagesByArea[areaClass]; 
+  const areaImages = imagesByArea[areaClass];
+  if (!areaImages) {
+    console.error(`Нет изображений для области ${areaClass}`);
+    return;
+  }
+
   const randomIndex = Math.floor(Math.random() * areaImages.length);
   const newImageSrc = areaImages[randomIndex];
-
   const imgElement = document.querySelector(`.${areaClass}`);
 
-  // Избегаем замены на то же изображение
-  if (imgElement.src.includes(newImageSrc)) {
+  if (!imgElement) {
+    console.error(`Элемент с классом ${areaClass} не найден`);
+    return;
+  }
+
+  if (imgElement.src.endsWith(newImageSrc)) {
     return changeImage(areaClass);
   }
 
@@ -119,13 +128,14 @@ function changeImage(areaClass) {
   }, 500);
 }
 
-// Функция для рандомного выбора области
+// Функция для смены случайной области
 function changeRandomArea() {
-  const areas = Object.keys(imagesByArea); 
+  const areas = Object.keys(imagesByArea);
   const randomArea = areas[Math.floor(Math.random() * areas.length)];
   changeImage(randomArea);
 }
 
+// Запускаем процесс смены изображений
 setInterval(changeRandomArea, 3500);
 
 document.getElementById('year').textContent = new Date().getFullYear();

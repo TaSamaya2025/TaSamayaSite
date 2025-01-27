@@ -89,7 +89,7 @@
 	}
 	.for_title2 {
 		display: block; 
-		width: 505px; 
+		width: 540px; 
 		height: 140px;
 		margin-left: 5vw;
 		text-align: left;
@@ -491,7 +491,7 @@
 	}
 	.end{
 		margin-bottom: 1rem;
-		margin-right: 0.4rem;
+		margin-right: 0.2rem;
 	}
 	.italics{
 		font-style: italic;
@@ -500,9 +500,10 @@
 	.non_plus{
 		margin-left: 2rem;
 		margin-bottom: 1rem;
-		line-height: 1.4;
-		color: #4C4A48;
-		font-size: 1rem;
+	}
+	.non_plus2{
+		margin-right: 0.8rem;
+		margin-bottom: 1rem;
 	}
 	.price-button {
 	  background: #2F476B;
@@ -1501,5 +1502,19 @@
 		word-wrap: break-word;
 		text-align: center;
 		margin-top: 0.5rem;
+	}
+	.end{
+		margin-bottom: 1rem;
+		margin-right: 0rem;
+		margin-left: 0.4rem;
+	}
+	.non_plus{
+		margin-left: 2rem;
+		margin-bottom: 1rem;
+	}
+	.non_plus2{
+		margin-right: 0.1rem;
+		margin-left: 0rem;
+		margin-bottom: 1rem;
 	}
 }
