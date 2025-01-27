@@ -42,20 +42,15 @@
   		height: 20px;
 		margin-right: 0vw;
 	}
-	.for_title1 h1, .for_title1 h2 {
-		width: 100%; 
-		margin: 0; 
-		white-space: nowrap;
-	}
-	.for_title1 h1 {
-		font-size: 24px;
-		font-weight: 500;
-	}
-	.for_title1 h2 {
-		font-size: 9.9px;
-		font-weight: 400;
-		margin-bottom: 1.5vh;
-		margin-top: -0.6vh;
+	.for_title2 {
+		display: block; 
+		width: 154px;
+		height: 34px;
+		padding-left: 3vw;
+		grid-area: 1 / 1 / 2 / 10;
+		margin-left: 0vh;
+		margin-top: 0vh;
+        margin-bottom: 0vh;
 	}
 	.nav-links {
 	  	top: 4vh; 
@@ -209,5 +204,10 @@
     }
 	.text_footer{
 		font-size: 0.6rem;
+	}
+	.modal-content {
+	  width: 80vw;
+	  height: 76vh;
+	  max-width: 500px;
 	}
 }

@@ -87,32 +87,14 @@
   		text-align: left;
  		padding-left: 5vw;
 	}
-	.for_title1 {
+	.for_title2 {
 		display: block; 
-		width: 38.1vw; 
+		width: 505px; 
+		height: 140px;
 		margin-left: 5vw;
 		text-align: left;
 		margin-top: 7.8vh;
 		margin-bottom: 7vh;
-	}
-
-	.for_title1 h1, .for_title1 h2 {
-		width: 100%; 
-		margin: 0; 
-		white-space: nowrap;
-	}
-
-	.for_title1 h1 {
-		font-size: 96px;
-		font-weight: 500;
-		color: #3D3B38;
-	}
-
-	.for_title1 h2 {
-		font-size: 39.3px;
-		font-weight: 400;
-		color: #3D3B38;
-		margin-top: -2.6vh;
 	}
 	.text1{
 		font-size: 1.6em;
@@ -347,7 +329,7 @@
 	.list{
 		margin-top: -0.6rem;
 		list-style: none;
-		padding-left: 3.2em;
+		padding-left: 3em;
 		font-size: 1rem;
 		font-weight: 400;
 		color: #4C4A48;
@@ -418,7 +400,7 @@
 	  justify-content: center;
 	  align-items: center;
 	  opacity: 0;
-	  transition: opacity 0.2s ease-in-out;
+	  transition: opacity 0.05s ease-in-out;
 	  z-index: 1;
 	}
 
@@ -897,8 +879,8 @@
 	.center{
 		display: flex;
 		align-items: baseline;
-		padding-left: 3vw;
-		padding-right: 1vw;
+		padding-left: 2vw;
+		padding-right: 2vw;
 		padding-bottom: 1vh;
 	}
 	.row_for_messenger{
@@ -1109,30 +1091,15 @@
 		margin-bottom: 2vh;
 		border-radius: 0px;
  	}
-	.for_title1 {
+	.for_title2 {
 		display: block; 
-		width: 38.1vw; 
+		width: 178px;
+		height: 40px;
 		padding-left: 3vw;
 		grid-area: 1 / 1 / 2 / 10;
 		margin-left: 0vh;
 		margin-top: 0vh;
         margin-bottom: 0vh;
-	}
-
-	.for_title1 h1, .for_title1 h2 {
-		width: 100%; 
-		margin: 0; 
-		white-space: nowrap;
-	}
-	.for_title1 h1 {
-		font-size: 36px;
-		font-weight: 500;
-	}
-	.for_title1 h2 {
-		font-size: 14.8px;
-		font-weight: 400;
-		margin-bottom: 2vh;
-		margin-top: -1vh;
 	}
 	.new_bac{
 		display: block;
@@ -1471,7 +1438,7 @@
 	  border-radius: 20px;
 	  padding: 4vh 5vw;
 	  width: 80vw;
-	  height: 72vh;
+	  height: 74vh;
 	  max-width: 500px;
 	}
 	input{
@@ -1484,7 +1451,7 @@
 	}
 	textarea {
 	  width: 100%;
-	  padding: 3vh 0vw;
+	  padding: 2vh 0vw;
 	  margin-bottom: 1vh;
 	  border-bottom: 2px solid #dcdcdc;
 	  font-size: 0.8rem;
