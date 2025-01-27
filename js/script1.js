@@ -1,3 +1,17 @@
+// Найти элементы h1 и h2
+const referenceTitle = document.getElementById('reference-title');
+const adjustedTitle = document.getElementById('adjusted-title');
+
+// Установить ширину H2 равной ширине H1
+adjustedTitle.style.width = `${referenceTitle.offsetWidth}px`;
+
+const resizeObserver = new ResizeObserver(() => {
+    adjustedTitle.style.width = `${referenceTitle.offsetWidth}px`;
+});
+
+// Следить за изменением размеров H1
+resizeObserver.observe(referenceTitle);
+
 /*Скрипт для бургер-меню*/
 var menuToggle = document.getElementById('menu-toggle');
 var navLinks = document.getElementById('nav-links');

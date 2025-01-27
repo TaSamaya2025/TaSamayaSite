@@ -5,6 +5,16 @@
             src: url('Style/font/Inter.woff2') format('truetype'); 
         }
 @media (min-width: 300px) {
+
+	.tns-inner {
+		overflow: visible !important;
+	}
+	.tns-visually-hidden{
+		overflow: visible !important;
+	}
+	.tns-ovh{
+		overflow: visible !important;
+	}
 	
 	html, body{
 		margin: 0;
@@ -256,7 +266,7 @@
 	.picture_scroll {
 		  margin-top: 5rem;
 		  position: relative;
-		  overflow-x: hidden; 
+		  overflow-x: hidden!important; 
 		  width: 100%;
 		  height: 86%; 
 		  display: flex;
@@ -266,8 +276,9 @@
 	}
 
 	.track {
-		 display: flex;
+		  display: flex;
 		  gap: 3rem;
+		  overflow: visible !important;
 		  animation: scroll 20s linear infinite;
 		  -webkit-animation: scroll 20s linear infinite;
 		  -moz-animation: scroll 20s linear infinite;
@@ -276,10 +287,6 @@
 		  user-select: none; 
     	  -webkit-user-drag: none;
 	}
-	.picture_scroll:hover .track {
-		  animation-play-state: paused; /* Пауза анимации при наведении */
-	}
-
 	/* Изображения в ленте */
 	.track img {
 		  width: 20vw;
@@ -287,11 +294,13 @@
 		  object-fit: cover;
 		  border-radius: 20px; 
 		  transition: transform 0.3s ease, filter 0.3s ease;
+		  position: relative;
+    	  z-index: 1;
 	}
 
 	.track img:hover {
-		  transform: scale(1.1); 
-		  filter: brightness(0.6); 
+		  transform: scale(1.06); 
+		  filter: brightness(0.6);
 	}
 		/*Третий блок*/
 	.container3{
@@ -500,7 +509,7 @@
 	}
 	.end{
 		margin-bottom: 1rem;
-		margin-right: 0.09rem;
+		margin-right: 0.4rem;
 	}
 	.italics{
 		font-style: italic;
@@ -984,15 +993,6 @@
 	}
 }
 
-/* Анимация прокрутки */
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-38.4%)); /* Двигаем дальше половины ленты */
-  }
-}
 /* Новые стили сайта при его уменьшенном размере */
 @media (max-width: 1270px) {
   html, body {

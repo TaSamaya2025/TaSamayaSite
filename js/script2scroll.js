@@ -1,133 +1,46 @@
-var container = document.getElementById("track");
+document.addEventListener('DOMContentLoaded', () => {
+  var slider = tns({
+    container: '.track', // Указываем контейнер с изображениями
+    items: 4, // Количество видимых слайдов
+    slideBy: 1, // Количество слайдов за раз
+    loop: true, // Включаем бесконечный скролл
+    autoplay: true, // Автоплей
+    autoplayTimeout: 2400, // Интервал прокрутки (мс)
+    autoplayButtonOutput: false, // Убираем кнопки управления автоплеем
+    speed: 900, // Скорость анимации
+    mouseDrag: true, // Возможность прокрутки мышью
+    controls: false, // Убираем стрелки управления
+    nav: false, // Убираем точки навигации
+  });
 
-function checkDimensions() {
-    var images = document.querySelectorAll("#track img");
-    var totalWidth = 0;
+  // События для восстановления автоплея
+  const track = document.querySelector('.track');
+  let isUserScrolling = false;
 
-    images.forEach(function (img) {
-        totalWidth += img.offsetWidth; // Суммируем ширину картинок
-    });
+  // Останавливаем автоплей при взаимодействии пользователя
+  track.addEventListener('mousedown', () => {
+    isUserScrolling = true;
+    slider.pause();
+  });
 
-    // Рассчитываем ширину контейнера в процентах
-    var containerWidth = totalWidth;
-    var containerPercentageWidth = (containerWidth / window.innerWidth) * 100;
+  track.addEventListener('mouseup', () => {
+    isUserScrolling = false;
+    slider.play();
+  });
 
-    container.style.width = containerPercentageWidth + "%"; // Устанавливаем ширину в процентах
-}
-checkDimensions();
+  track.addEventListener('mouseleave', () => {
+    if (!isUserScrolling) slider.play();
+  });
 
-const scrollContainer = document.querySelector('.picture_scroll');
-const scrollTrack = document.querySelector('.track');
-
-let isScrollDragging = false;
-let scrollStartX;
-let initialScrollLeft;
-
-// Флаг, чтобы определить, когда прокручиваем вручную
-let isUserScrolling = false;
-
-// Добавляем событие для начала перетаскивания
-scrollContainer.addEventListener('mousedown', (e) => {
-    isScrollDragging = true;
-    scrollContainer.classList.add('dragging');
-    scrollStartX = e.pageX - scrollContainer.offsetLeft;
-    initialScrollLeft = scrollContainer.scrollLeft;
-    
-    e.preventDefault();
+  track.addEventListener('wheel', () => {
+    isUserScrolling = true;
+    clearTimeout(track.scrollTimeout);
+    track.scrollTimeout = setTimeout(() => {
+      isUserScrolling = false;
+      slider.play();
+    }, 10);
+  });
 });
-
-// Обработчик движения мыши
-scrollContainer.addEventListener('mousemove', (e) => {
-    if (!isScrollDragging) return;
-    e.preventDefault();
-    const currentX = e.pageX - scrollContainer.offsetLeft;
-    const distance = (currentX - scrollStartX) * 2; // Ускорение прокрутки
-    scrollContainer.scrollLeft = initialScrollLeft - distance;
-});
-
-// Завершаем перетаскивание
-scrollContainer.addEventListener('mouseup', () => {
-    isScrollDragging = false;
-    scrollContainer.classList.remove('dragging');
-});
-
-// Завершаем перетаскивание, если мышь выходит за пределы контейнера
-scrollContainer.addEventListener('mouseleave', () => {
-    isScrollDragging = false;
-    scrollContainer.classList.remove('dragging');
-});
-// Для мобильных устройств (сенсорное взаимодействие)
-scrollContainer.addEventListener('touchstart', (e) => {
-    isScrollDragging = true;
-    scrollContainer.classList.add('dragging');
-    scrollStartX = e.touches[0].pageX - scrollContainer.offsetLeft;
-    initialScrollLeft = scrollContainer.scrollLeft;
-    e.preventDefault();
-}, { passive: true });
-
-scrollContainer.addEventListener('touchmove', (e) => {
-    if (!isScrollDragging) return;
-    e.preventDefault();
-    const currentX = e.touches[0].pageX - scrollContainer.offsetLeft;
-    const distance = (currentX - scrollStartX) * 2; // Ускорение прокрутки
-    scrollContainer.scrollLeft = initialScrollLeft - distance;
-}, { passive: true });
-
-scrollContainer.addEventListener('touchend', () => {
-    isScrollDragging = false;
-    scrollContainer.classList.remove('dragging');
-});
-
-scrollContainer.addEventListener('touchcancel', () => {
-    isScrollDragging = false;
-    scrollContainer.classList.remove('dragging');
-});
-// Бесконечный скролл
-scrollContainer.addEventListener('scroll', function () {
-    if (isUserScrolling) return; // Не делать бесконечный скролл, если пользователь прокручивает вручную
-
-    const maxScrollPosition = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-
-    if (scrollContainer.scrollLeft <= 0) {
-        // Перемещаемся в конец
-        scrollContainer.scrollLeft = maxScrollPosition - 1;
-    } else if (scrollContainer.scrollLeft >= maxScrollPosition) {
-        // Перемещаемся в начало
-        scrollContainer.scrollLeft = 1;
-    }
-
-    // Если контейнер прокручивается до конца, то обновляем картинки
-    if (scrollContainer.scrollLeft >= maxScrollPosition || scrollContainer.scrollLeft <= 0) {
-        updateTrack(); // Обновляем состояние контента
-    }
-});
-
-// Управление колесиком мыши
-container.addEventListener("wheel", function (e) {
-    e.preventDefault();
-    isUserScrolling = true; // Устанавливаем флаг, что пользователь прокручивает вручную
-    container.scrollLeft += e.deltaY > 0 ? 100 : -100;
-
-    // Ожидание завершения прокрутки, чтобы восстановить флаг
-    clearTimeout(container.scrollTimeout);
-    container.scrollTimeout = setTimeout(function() {
-        isUserScrolling = false;
-    }, 100);
-});
-
-// Функция для обновления картинок
-function updateTrack() {
-    const images = document.querySelectorAll("#track img");
-
-    // Если картинок меньше 2, добавляем новые
-    if (images.length < 2) {
-        const img = document.createElement('img');
-        img.src = "path_to_new_image"; // Путь к новой картинке
-        img.alt = "New Image";
-        scrollTrack.appendChild(img); // Добавляем новую картинку в конец
-        checkDimensions(); // Пересчитываем размеры
-    }
-}
 
 // Открытие модального окна
 var openModalButtons = document.querySelectorAll('.image-modal-trigger');
@@ -150,51 +63,52 @@ var imageSets = {
     8: [801, 802, 803, 804, 805, 806]
 };
 
-// Функция открытия модального окна
-
-document.querySelectorAll('.image-modal-trigger').forEach(image => {
-    image.addEventListener('click', function() {
-        const imageIndex = this.dataset.image;  
-        
-        // Для слайдера: генерируем картинки для слайдера
-        loadSliderImages(imageIndex); 
-        // Открываем модальное окно
-        document.getElementById('popup-modal').style.display = 'flex';
-		document.body.classList.add('popup_modal-open');
-		setTimeout(() => {
-            const container_scr = document.getElementById('popup-image-container');
-            const centerPosition = container_scr.scrollWidth / 2 - container.clientWidth / 2;
-            container_scr.scrollLeft = centerPosition;
-        }, 30); 
-		
-    });
-});
 // Функция для загрузки изображений в слайдер
 function loadSliderImages(imageIndex) {
-    imageContainer2.innerHTML = ''; 
+    imageContainer2.innerHTML = ''; // Очищаем контейнер перед добавлением новых изображений
 
     // Пример слайдера для каждого набора изображений
-    const totalImages = imageSets[imageIndex].length;  
+    const totalImages = imageSets[imageIndex].length;
     for (let i = 0; i < totalImages; i++) {
         const img = document.createElement('img');
-        img.src = `Image/${imageIndex * 100 + (i + 1)}.jpg`;  
+        img.src = `Image/${imageIndex * 100 + (i + 1)}.jpg`; // Генерация пути для изображений
         img.className = 'popup-slider-image';
+        img.dataset.imageIndex = imageIndex; // Добавляем атрибут для дальнейшей обработки
         imageContainer2.appendChild(img);
     }
 }
 
+// Открытие модального окна для изображений
+document.querySelector('.picture_scroll').addEventListener('click', function(event) {
+    // Проверяем, что клик был по изображению с классом image-modal-trigger
+    if (event.target && event.target.classList.contains('image-modal-trigger')) {
+        const imageIndex = event.target.dataset.image;
+        
+        // Для слайдера: генерируем картинки для слайдера
+        loadSliderImages(imageIndex);
+        
+        // Открываем модальное окно
+        document.getElementById('popup-modal').style.display = 'flex';
+        document.body.classList.add('popup_modal-open');
+        setTimeout(() => {
+            const container_scr = document.getElementById('popup-image-container');
+            const centerPosition = container_scr.scrollWidth / 2 - container.clientWidth / 2;
+            container_scr.scrollLeft = centerPosition;
+        }, 30); 
+    }
+});
+
 // Закрытие модального окна
 closeModalButton_2.addEventListener('click', function() {
     modal_pict.style.display = 'none';
-	document.body.classList.remove('popup_modal-open');
+    document.body.classList.remove('popup_modal-open');
 });
 
 // Закрытие модального окна при клике вне его
 window.addEventListener('click', function(event) {
     if (event.target === modal_pict) {
         modal_pict.style.display = 'none';
-		;
-		document.body.classList.remove('popup_modal-open')
+        document.body.classList.remove('popup_modal-open');
     }
 });
 
