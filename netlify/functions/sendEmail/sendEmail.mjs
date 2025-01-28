@@ -30,15 +30,15 @@ exports.handler = async function (event, context, callback) {
       port: 465,
       secure: true, // true для порта 465, false для других
       auth: {
-        user: 'SvetlanaVorobueva@yandex.ru', // генерируемый ethereal user
+        user: 'tasamaya-design@yandex.ru', // генерируемый ethereal user
         pass: process.env.SMTP_PASS, // генерируемый ethereal password
       },
     });
 
     // Отправляем email
     let info = await transporter.sendMail({
-      from: '"Светлана Воробьева" <SvetlanaVorobueva@yandex.ru>', // От кого
-      to: "SvetlanaVorobueva@yandex.ru", // Замените на email получателя
+      from: '"TASAMAYA-DESIGN ru" <tasamaya-design@yandex.ru>', // От кого
+      to: "tasamaya-design@yandex.ru", // Замените на email получателя
       subject: "Новый заказ на дизайн проект", // Тема письма
       text: body.message, // Текст письма
       html: htmlContent, // HTML формат письма

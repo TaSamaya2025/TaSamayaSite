@@ -236,12 +236,12 @@
 	.sticky-title {
 		  position: absolute;
 		  top: 0;
-		  left: 12.2vw; /* Фиксация заголовка наверху */
+		  left: 12.2vw; 
 		  text-align: left;
 		  font-size: 2rem;
 		  font-weight: 500;
 		  z-index: 10; 
-		  padding: 0.5rem; /* Заголовок будет над остальным содержимым */
+		  padding: 0.5rem; 
 		  color: #3D3B38;
 	} 
 
@@ -299,11 +299,19 @@
 		display: flex;
 		margin-bottom: 7vh;
 		padding-top: 1vh;
-		padding-right: 4vw;
+		padding-right: 6vw;
 		padding-left: 6vw;
+		width: 100%;
+    	max-width: 1600px;
+		gap: 2.5vw; 
+        align-items: flex-start; 
+	}
+	.text_block {
+		flex: 1; 
+		max-width: 40%; 
 	}
 	.photo{
-		width: 52vw;
+		width: 58%;
 		height: 100%;
 		border-radius: 20px;
 	}
@@ -317,14 +325,11 @@
 		padding-left: 1.8em;
 		line-height: 1.4;
 	}
-	.padding_for_fat{
-		margin-top: -0.5rem; 
-	}
 	.fat_text{
 		font-size: 1.2rem;
 		font-weight: 500;
 		color: #3D3B38;
-		padding-left: 1.8em;
+		padding-left: 1.6em;
 	}
 	.list{
 		margin-top: -0.6rem;
@@ -343,10 +348,10 @@
 	.list li::before {
 		content: '•'; 
 		color: #4C4A48;
-		margin-right: 1rem;
+		margin-right: 0.5rem;
 		display: inline-block;
 	}
-	.column{
+	.column_tog{
 		display: flex;
 	    flex-direction: column;}
 	/*4 блок*/
@@ -678,7 +683,7 @@
     }
 
     .card-wrapper {
-        flex: 1 1 48%; /* Гибкий элемент: занимает 48%, но может уменьшаться */
+        flex: 1 1 48%; 
     	max-width: 48%; 
         border-radius: 20px;
         overflow: hidden;
@@ -975,7 +980,31 @@
 		margin-top: 0.4rem;
 	}
 }
+@media (min-width: 1920px) {
+    .together_row {
+        max-width: 1800px;
+        gap: 4vw;
+    }
 
+    .text_block {
+        max-width: 30%; 
+        flex-grow: 1;
+    }
+
+    .photo {
+        max-width: 68%; 
+    }
+}
+@media (max-width: 1400px) {
+	.text_block {
+        max-width: 46%;
+        flex-grow: 1;
+    }
+	.photo {
+		width: 52%; 
+		max-width: 100%; 
+	  }
+}
 /* Новые стили сайта при его уменьшенном размере */
 @media (max-width: 1270px) {
   html, body {
@@ -985,7 +1014,7 @@
 	overflow-x: hidden;
 	}
   .row2.together_row {
-    flex-direction: column; /* Перестраиваем на столбик */
+    flex-direction: column; 
     align-items: flex-start; 
   }
 
@@ -1066,6 +1095,10 @@
 	  height: 82vh;
 	  max-width: 500px;
 	}
+	.text_block {
+        max-width: 100%;
+        flex-grow: 1;
+    }
 }
 @media (max-width: 700px) {
 	html, body {
@@ -1178,7 +1211,7 @@
           font-size: 0.8em;
     }
 	.sticky-title {
-		  left: 7vw; /* Фиксация заголовка наверху */
+		  left: 7vw; 
 		  text-align: left;
 		  font-size: 1rem;
 		  font-weight: 500;
@@ -1251,7 +1284,7 @@
         overflow: hidden;
     }
 	.card-wrapper {
-        flex: 1 1 100%; /* Карточки занимают всю ширину */
+        flex: 1 1 100%; 
         max-width: 100%;
     }
 
