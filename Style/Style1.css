@@ -2,7 +2,7 @@
 /* CSS Document */
 @font-face {
             font-family: 'Inter'; 
-            src: url('Style/font/Inter.woff2') format('truetype'); 
+            src: url('font/Inter.woff2') format('woff2'); 
         }
 @media (min-width: 300px) {
 
@@ -35,10 +35,22 @@
         grid-template-columns: auto;
         grid-auto-rows: minmax(auto, auto);
 	}
+	.row_for_titile{
+		display: flex;
+		flex-direction: row;}
 	
-	.padding1{padding-top: 5vw;
-			  padding-left: 6vw;
-			  padding-right: 6vw;}
+	.hidden-h1 {
+		position: absolute;
+		left: -9999px;  /* Убираем текст за пределы экрана */
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	.padding1{
+		padding-top: 5vw;
+		padding-left: 6vw;
+		padding-right: 6vw;}
 	
 	.colorwh{background: white;}
 	.new_bac{
@@ -195,14 +207,14 @@
     }
 
     .buttons button {
-          background-color: #2F476B;
-          color: white;
-          border: none;
-          border-radius: 10px;
-          padding: 1.5vh 2vw;
-          font-size: 1em;
-          cursor: pointer;
-		  text-decoration: none;
+        background-color: #2F476B;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 1.5vh 2vw;
+        font-size: 1em;
+        cursor: pointer;
+		text-decoration: none;
     }
 
     .buttons button:hover {
@@ -987,12 +999,12 @@
     }
 
     .text_block {
-        max-width: 30%; 
+        max-width: 34%; 
         flex-grow: 1;
     }
 
     .photo {
-        max-width: 68%; 
+        max-width: 66%; 
     }
 }
 @media (max-width: 1400px) {
@@ -1125,12 +1137,14 @@
 		margin-bottom: 2vh;
 		border-radius: 0px;
  	}
+	.row_for_titile{
+		grid-area: 1 / 1 / 2 / 10;
+	}
 	.for_title2 {
 		display: block; 
 		width: 178px;
 		height: 40px;
 		padding-left: 3vw;
-		grid-area: 1 / 1 / 2 / 10;
 		margin-left: 0vh;
 		margin-top: 0vh;
         margin-bottom: 0vh;
