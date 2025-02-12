@@ -1112,7 +1112,7 @@
         flex-grow: 1;
     }
 }
-@media (max-width: 700px) {
+@media (max-width: 1024px) {
 	html, body {
 	  margin: 0;
 	  padding: 0;
@@ -1168,7 +1168,7 @@
 		padding-top: 0vh;
 	}
     .main-content {
-		padding-left: 3vw;
+		padding-left: 4vw;
 		margin-bottom: 0;
 		grid-area: 3 / 1 / 4 / 11;
     }
@@ -1183,12 +1183,12 @@
 		align-items: center;
 	}
 	.text1{
-		font-size: 1em;
+		font-size: 1.2em;
 		margin-bottom: 2.5vh;
 		font-weight: 500;
 	}
 	.text2 {
-	  	font-size: 0.75em;
+	  	font-size: 0.9em;
 		margin-bottom: 2vh;
 		font-weight: 500;
 	}
@@ -1225,9 +1225,9 @@
           font-size: 0.8em;
     }
 	.sticky-title {
-		  left: 7vw; 
+		  left: 8vw; 
 		  text-align: left;
-		  font-size: 1rem;
+		  font-size: 1.4rem;
 		  font-weight: 500;
 		  z-index: 10; 
 		  padding: 0rem 1rem;
@@ -1236,7 +1236,7 @@
 	.title_for_blocks{
 		font-size: 1.4rem;
 		font-weight: 500;
-		margin-left: 5rem;
+		margin-left: 6rem;
 	}
 	.grid-container {
 	    display: grid;
@@ -1260,9 +1260,82 @@
 	
 	.grid-item .overlay p {
 	  color: white;
-	  font-size: 0.8rem;
+	  font-size: 1rem;
 	  text-align: center;
 	  margin: 0;
+	}
+	.picture_scroll {
+		  margin-top: 3rem;
+		  position: relative;
+		  overflow-x: hidden; 
+		  width: 100%;
+		  height: 86%; 
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+	}
+}
+@media (max-width: 750px) {
+	html, body {
+	  margin: 0;
+	  padding: 0;
+	  overflow-x: hidden;
+	  width: 100%;
+      height: 100%;
+	}
+	
+    .main-content {
+		padding-left: 5.5vw;
+    }
+	.menu-button{
+		text-align: right;
+		width: 30px; 
+  		height: 25px;
+		margin-right: 0vw;
+	}
+	.row{
+		justify-content: center;
+		align-items: center;
+	}
+	.text1{
+		font-size: 1em;
+		margin-bottom: 2.5vh;
+		font-weight: 500;
+	}
+	.text2 {
+	  	font-size: 0.75em;
+		margin-bottom: 2vh;
+		font-weight: 500;
+	}
+	.nav-links {
+	  	top: 6vh; 
+		right: 0vw;
+	  	padding-right: 20vh;
+	  	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+	  	border-radius: 10px;
+	  	width: 42vw; 
+	}
+	.nav-links li {
+	  	list-style: none; 
+	  	margin: 1vw 0vh;
+		margin-left: -2vw;
+	}
+
+	.nav-links a {
+		font-size: 0.7em;
+		white-space: nowrap;
+	}
+	.sticky-title {
+		  left: 6vw; 
+		  text-align: left;
+		  font-size: 1rem;
+	} 
+	.title_for_blocks{
+		font-size: 1.4rem;
+		margin-left: 4.8rem;
+	}
+	.grid-item .overlay p {
+	  font-size: 0.8rem;
 	}
 	.padding3{
 		padding-left: 1.18em;
@@ -1415,18 +1488,7 @@
 		  text-align: left;
 		  font-size: 1.4rem;
 		  padding: 0.5rem; 
-	} 
-	.picture_scroll {
-		  margin-top: 3rem;
-		  position: relative;
-		  overflow-x: hidden; 
-		  width: 100%;
-		  height: 86%; 
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
 	}
-
 	.track {
 		 display: flex;
 		  gap: 2rem;
