@@ -1198,7 +1198,7 @@
 	  	padding-right: 20vh;
 	  	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 	  	border-radius: 10px;
-	  	width: 42vw; 
+	  	width: 36vw; 
 	}
 
 	.nav-links li {
@@ -1208,7 +1208,7 @@
 	}
 
 	.nav-links a {
-		font-size: 0.7em;
+		font-size: 0.8em;
 		white-space: nowrap;
 	}
 	.buttons {
@@ -1274,86 +1274,6 @@
 		  align-items: center;
 		  justify-content: center;
 	}
-}
-@media (max-width: 750px) {
-	html, body {
-	  margin: 0;
-	  padding: 0;
-	  overflow-x: hidden;
-	  width: 100%;
-      height: 100%;
-	}
-	
-    .main-content {
-		padding-left: 5.5vw;
-    }
-	.menu-button{
-		text-align: right;
-		width: 30px; 
-  		height: 25px;
-		margin-right: 0vw;
-	}
-	.row{
-		justify-content: center;
-		align-items: center;
-	}
-	.text1{
-		font-size: 1em;
-		margin-bottom: 2.5vh;
-		font-weight: 500;
-	}
-	.text2 {
-	  	font-size: 0.75em;
-		margin-bottom: 2vh;
-		font-weight: 500;
-	}
-	.nav-links {
-	  	top: 6vh; 
-		right: 0vw;
-	  	padding-right: 20vh;
-	  	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-	  	border-radius: 10px;
-	  	width: 42vw; 
-	}
-	.nav-links li {
-	  	list-style: none; 
-	  	margin: 1vw 0vh;
-		margin-left: -2vw;
-	}
-
-	.nav-links a {
-		font-size: 0.7em;
-		white-space: nowrap;
-	}
-	.sticky-title {
-		  left: 6vw; 
-		  text-align: left;
-		  font-size: 1rem;
-	} 
-	.title_for_blocks{
-		font-size: 1.4rem;
-		margin-left: 4.8rem;
-	}
-	.grid-item .overlay p {
-	  font-size: 0.8rem;
-	}
-	.padding3{
-		padding-left: 1.18em;
-		line-height: 1.4;
-	}
-	.padding_for_fat{
-		margin-top: -0.4rem; 
-	}
-	.fat_text{
-		font-size: 1rem;
-		font-weight: 500;
-		padding-left: 1.5em;
-	}
-	.list{
-		margin-top: -0.6rem;
-		padding-left: 1.18em;
-		font-size: 0.75rem;
-	}
 	.container {
         display: flex;
         flex-direction: row;
@@ -1374,49 +1294,6 @@
         flex: 1 1 100%; 
         max-width: 100%;
     }
-
-	.The_form h3{
-		padding-top: 2vh;
-		margin-left: 2.4rem;
-		margin-top: -0.2em;
-		font-size: 1.4rem;
-		font-weight: 500;
-	}
-	.container5{
-		height: auto;
-	}
-	.gallery {
-        display: grid;
-		justify-content: center;
-        grid-template: repeat(14, 1fr)/repeat(4, 1fr);
-        gap: 2vw;
-        width: 100%;
-		height: 100%;
-    }
-	.marg_for_gallery{
-		margin-top: 8vh;
-	}
-	.A{
-		grid-area: 1 / 1 / 7 / 3;
-	}
-	.B{
-		grid-area: 7 / 1 / 10 / 3;
-	}
-	.C{
-		grid-area: 5 / 3 / 8 / 5;
-	}
-	.D{
-		grid-area: 12 / 3 / 15 / 5;
-	}
-	.E{
-		grid-area: 1 / 3 / 5 / 5;
-	}
-	.F{
-		grid-area: 8 / 3 / 12 / 5;
-	}
-	.G{
-		grid-area: 10 / 1 / 15 / 3;
-	}
 	.row3{
 		flex-direction: column;
 		justify-content: center;
@@ -1459,6 +1336,158 @@
 	.text_footer{
 		font-size: 0.8rem;
 	}
+	footer{
+		margin-top: 5vh;}
+	.meta{
+		display: flex;
+		flex-direction: column;
+		width: 36%;
+		justify-content: center;
+	}
+	.insta { 
+		color: #4C4A48;
+		font-size: 0.4rem; 
+		word-wrap: break-word;
+		text-align: center;
+		margin-top: 0.5rem;
+	}
+	.row_for_messenger{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.The_form h3{
+		padding-top: 2vh;
+		margin-left: 2.4rem;
+		margin-top: -0.2em;
+		font-size: 1.4rem;
+		font-weight: 500;
+	}
+	.pricing-grid {
+	  display: grid;
+	  grid-template: repeat(3, 1fr)/repeat(1, 1fr);
+	  gap: 16px;
+	  padding: 1vh 6vw;
+	}
+	.pos_rig{
+			left: 0em;
+			right: 0em;
+	}
+	.pos_lef{
+		    left: 0em;
+			right: 0em;
+	}
+	
+	.pricing-card {
+	  border-radius: 38px;
+	}
+	.padding3{
+		padding-left: 3.2em;
+		line-height: 1.4;
+	}
+	.padding_for_fat{
+		margin-top: -0.4rem; 
+	}
+	.fat_text{
+		font-size: 1rem;
+		font-weight: 500;
+		padding-left: 3.8em;
+	}
+	.list{
+		margin-top: -0.6rem;
+		padding-left: 5.2em;
+		font-size: 0.75rem;
+	}
+}
+@media (max-width: 750px) {
+	html, body {
+	  margin: 0;
+	  padding: 0;
+	  overflow-x: hidden;
+	  width: 100%;
+      height: 100%;
+	}
+    .main-content {
+		padding-left: 5.5vw;
+    }
+	.text1{
+		font-size: 1em;
+		margin-bottom: 2.5vh;
+		font-weight: 500;
+	}
+	.text2 {
+	  	font-size: 0.75em;
+		margin-bottom: 2vh;
+		font-weight: 500;
+	}
+	.nav-links {
+	  	top: 6vh; 
+		right: 0vw;
+	  	padding-right: 20vh;
+	  	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+	  	border-radius: 10px;
+	  	width: 42vw; 
+	}
+	.nav-links a {
+		font-size: 0.7em;
+		white-space: nowrap;
+	}
+	.sticky-title {
+		  left: 6vw; 
+		  text-align: left;
+		  font-size: 1rem;
+	} 
+	.title_for_blocks{
+		font-size: 1.4rem;
+		margin-left: 4.8rem;
+	}
+	.grid-item .overlay p {
+	  font-size: 0.8rem;
+	}
+	.padding3{
+		padding-left: 3em;
+	}
+	.fat_text{
+		padding-left: 3em;
+	}
+	.list{
+		padding-left: 4em;
+	}
+	.container5{
+		height: auto;
+	}
+	.gallery {
+        display: grid;
+		justify-content: center;
+        grid-template: repeat(14, 1fr)/repeat(4, 1fr);
+        gap: 2vw;
+        width: 100%;
+		height: 100%;
+    }
+	.marg_for_gallery{
+		margin-top: 8vh;
+	}
+	.A{
+		grid-area: 1 / 1 / 7 / 3;
+	}
+	.B{
+		grid-area: 7 / 1 / 10 / 3;
+	}
+	.C{
+		grid-area: 5 / 3 / 8 / 5;
+	}
+	.D{
+		grid-area: 12 / 3 / 15 / 5;
+	}
+	.E{
+		grid-area: 1 / 3 / 5 / 5;
+	}
+	.F{
+		grid-area: 8 / 3 / 12 / 5;
+	}
+	.G{
+		grid-area: 10 / 1 / 15 / 3;
+	}
 	.submit-button{
 		display: flex;
 		width: auto;
@@ -1498,30 +1527,11 @@
 		  will-change: transform;
 		  cursor: grab;
 	}
-	
 	.track img {
 		  width: 18vw;
 		  height: auto;
 		  object-fit: cover;
 		  border-radius: 20px; 
-	}
-	.pricing-grid {
-	  display: grid;
-	  grid-template: repeat(3, 1fr)/repeat(1, 1fr);
-	  gap: 16px;
-	  padding: 1vh 6vw;
-	}
-	.pos_rig{
-			left: 0em;
-			right: 0em;
-	}
-	.pos_lef{
-		    left: 0em;
-			right: 0em;
-	}
-	
-	.pricing-card {
-	  border-radius: 38px;
 	}
 	.image-container img {
 	  width: 100%; 
@@ -1529,8 +1539,6 @@
 	  object-fit: cover; 
 	  border-radius: 28px; 
 	}
-	footer{
-		margin-top: 5vh;}
 	.modal {
 	  display: none; 
 	  position: fixed;
@@ -1594,24 +1602,6 @@
 	.colum2{
 	  margin-top: 10vh;
 		}
-	.row_for_messenger{
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-	}
-	.meta{
-		display: flex;
-		flex-direction: column;
-		width: 30%;
-		justify-content: center;
-	}
-	.insta { 
-		color: #4C4A48;
-		font-size: 0.4rem; 
-		word-wrap: break-word;
-		text-align: center;
-		margin-top: 0.5rem;
-	}
 	.end{
 		margin-bottom: 1rem;
 		margin-right: 0rem;

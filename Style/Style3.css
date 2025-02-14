@@ -210,4 +210,13 @@
 	  height: 76vh;
 	  max-width: 500px;
 	}
+	.padding3{
+		padding-left: 2.2em;
+	}
+	.fat_text{
+		padding-left: 2.2em;
+	}
+	.list{
+		padding-left: 3em;
+	}
 }
